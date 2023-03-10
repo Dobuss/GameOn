@@ -1,5 +1,13 @@
 export const Register = () => {
     return (
+        <div className="container-fluid py-6 px-5">
+        <div className="row gx-5">
+            <div className="col-lg-4 mb-5 mb-lg-0">
+                <div className="mb-4">
+                    <h1 className="display-5 text-uppercase mb-4"><span className="text-primary">Register </span></h1>
+                    <p className="mb-5" style={{fontSize: 30}}>Hooray! Welcome to our family. Tell us a bit about yourself <i className="bi bi-arrow-right"></i></p>
+                </div>
+            </div>
         <div className="col-lg-8">
                 <div className="bg-light text-center p-5">
                     <form>
@@ -29,5 +37,7 @@ export const Register = () => {
                     </form>
                 </div>
             </div>
+            </div>
+    </div>
     );
 }

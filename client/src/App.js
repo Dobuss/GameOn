@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Contact } from "./components/Contact";
+import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
 import { Header } from "./components/gamesCatalogue/Header";
 import { AboutUs } from "./components/homePage/AboutUs";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/contact" element={ <Contact /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
+        <Route path="/new-game" element={ <AddNewGame /> } />
         <Route path="/games/" element={
           <>
               <Header />

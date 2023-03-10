@@ -269,3 +269,12 @@
     background: var(--primary);
     transform: skew(40deg);
 }
+.newGameLbl {
+    padding: 10px;
+    color: #fd5d14;
+    font-size: 20px;
+    font-weight: 700;
+}
+.select {
+    background-color: white !important;
+}
