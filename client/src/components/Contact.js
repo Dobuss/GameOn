@@ -6,7 +6,7 @@ export const Contact = () => {
                 <div className="mb-4">
                     <h1 className="display-5 text-uppercase mb-4">Want to <span className="text-primary">GET IN TOUCH?</span></h1>
                 </div>
-                <p className="mb-5" >We are always at your service! If you have questions or just want to chat with us, do not hesitate to drop us a message.</p>
+                <p className="mb-5" style={{fontSize: 30}}>We are always at your service! If you have questions or just want to chat with us, do not hesitate to drop us a message.</p>
             </div>
             <div className="col-lg-8">
                 <div className="bg-light text-center p-5">

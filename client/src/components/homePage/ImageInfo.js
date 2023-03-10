@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const ImageInfo = () => {
     return (
         <div className="container-fluid p-0">
@@ -9,7 +11,7 @@ export const ImageInfo = () => {
                         <div className="p-3" style={{maxWidth: 900}}>
                             <i className="fab fa-playstation fa-4x text-primary mb-4 d-none d-sm-block"></i>
                             <h1 className="display-2 text-uppercase text-white mb-md-4">Embrace the gamer in you</h1>
-                            <a href="/" className="btn btn-primary py-md-3 px-md-5 mt-2">Browse Games</a>
+                            <Link to="/games" className="btn btn-primary py-md-3 px-md-5 mt-2">Browse Games</Link>
                         </div>
                     </div>
                 </div>
@@ -18,8 +20,8 @@ export const ImageInfo = () => {
                     <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div className="p-3" style={{maxWidth: 900}}>
                             <i className="fas fa-headset fa-4x text-primary mb-4 d-none d-sm-block"></i>
-                            <h1 className="display-2 text-uppercase text-white mb-md-4">We missed a game?</h1>
-                            <a href="/" className="btn btn-primary py-md-3 px-md-5 mt-2">Contact Us</a>
+                            <h1 className="display-2 text-uppercase text-white mb-md-4">We missed Link game?</h1>
+                            <Link to="/contact" className="btn btn-primary py-md-3 px-md-5 mt-2">Contact Us</Link>
                         </div>
                     </div>
                 </div>
