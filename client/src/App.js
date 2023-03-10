@@ -1,7 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Login } from "./components/authPages/Login";
-import { Register } from "./components/authPages/Register";
 import { Contact } from "./components/Contact";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
 import { Header } from "./components/gamesCatalogue/Header";
@@ -10,6 +8,8 @@ import { Footer } from "./components/homePage/Footer";
 import { ImageInfo } from "./components/homePage/ImageInfo";
 import { Navigation } from "./components/homePage/Navigation";
 import { Topbar } from "./components/homePage/Topbar";
+import { Login } from "./components/user/Login";
+import { Register } from "./components/user/Register";
 
 function App() {
   return (
