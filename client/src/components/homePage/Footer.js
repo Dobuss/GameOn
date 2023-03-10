@@ -24,10 +24,10 @@ export const Footer = () => {
                         <h4 className="text-white text-uppercase mb-4">Quick Links</h4>
                         <div className="d-flex flex-column justify-content-start">
                             <a className="text-white-50 mb-2" href="/"><i className="fa fa-angle-right me-2"></i>Home</a>
-                            <a className="text-white-50 mb-2" href="/"><i className="fa fa-angle-right me-2"></i>Games Catalogue</a>
-                            <a className="text-white-50 mb-2" href="/"><i className="fa fa-angle-right me-2"></i>Contact us</a>
-                            <a className="text-white-50 mb-2" href="/"><i className="fa fa-angle-right me-2"></i>Sign in</a>
-                            <a className="text-white-50" href="/"><i className="fa fa-angle-right me-2"></i>Register</a>
+                            <a className="text-white-50 mb-2" href="/games"><i className="fa fa-angle-right me-2"></i>Games Catalogue</a>
+                            <a className="text-white-50 mb-2" href="/contact"><i className="fa fa-angle-right me-2"></i>Contact us</a>
+                            <a className="text-white-50 mb-2" href="/login"><i className="fa fa-angle-right me-2"></i>Sign in</a>
+                            <a className="text-white-50" href="/register"><i className="fa fa-angle-right me-2"></i>Register</a>
                         </div>
                     </div>
                     <div className="col-sm-12">
