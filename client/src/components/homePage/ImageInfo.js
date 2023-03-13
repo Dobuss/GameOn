@@ -20,7 +20,7 @@ export const ImageInfo = () => {
                     <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div className="p-3" style={{maxWidth: 900}}>
                             <i className="fas fa-headset fa-4x text-primary mb-4 d-none d-sm-block"></i>
-                            <h1 className="display-2 text-uppercase text-white mb-md-4">We missed Link game?</h1>
+                            <h1 className="display-2 text-uppercase text-white mb-md-4">We missed a game?</h1>
                             <Link to="/contact" className="btn btn-primary py-md-3 px-md-5 mt-2">Contact Us</Link>
                         </div>
                     </div>

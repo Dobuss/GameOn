@@ -22,7 +22,7 @@ export const AboutUs = () => {
             </div>
             <div className="col-lg-5 pb-5" style={{minHeight: 400}}>
                 <div className="position-relative bg-dark-radial h-100 ms-5">
-                    <img className="position-absolute w-100 h-100 mt-5 ms-n5" src="img/need4speed.jpg" style={{objectFit: "contain"}} alt=""/>
+                    <img className="position-absolute w-100 h-100 mt-5 ms-n5" src="img/game.jpg" style={{objectFit: "contain"}} alt=""/>
                 </div>
             </div>
         </div>
