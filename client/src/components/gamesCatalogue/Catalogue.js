@@ -1,148 +1,32 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import * as gamesService from '../../services/gamesService';
+import { Game } from './Game'
 
 export const Catalogue = () => {
+
+    const [games, setGames] = useState(null);
+
+    useEffect(() => {
+        gamesService
+        .getGames()
+        .then(games => {
+            setGames(games);
+        })
+        .catch((err) => {
+            throw err;
+        });
+    }, []);
+
     return (
         <div className="container-fluid py-6 px-5">
         <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
             <h1 className="display-5 text-uppercase mb-4">Browse <span className="text-primary">Games</span></h1>
         </div>
         <div className="row g-5">
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/resident-evil.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: action</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Resident Evil</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/need4speed.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: cars</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Need For Speed</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/fifa.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: sport</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">FIFA</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/assassin.jpeg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: action</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Assassin's Creed</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/sims.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: life</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">SIMS 4</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/hitman.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: action</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Hitman</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/mortal.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: fighter</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Mortal Kombat</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-                <div className="bg-light">
-                    <img className="img-fluid" src="img/awayout.jpg" alt=""/>
-                    <div className="p-4">
-                        <div className="d-flex justify-content-between mb-4">
-                            <div className="d-flex align-items-center">
-                                <span>Category: Co-Op</span>
-                            </div>
-                            <div className="d-flex align-items-center">
-                                <span className="ms-3"><i className="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</span>
-                            </div>
-                        </div>
-                        <h4 className="text-uppercase mb-3">Link way out</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
-                    </div>
-                </div>
-            </div>
+
+            {games?.map(g => <Game key={g._id} game={g}/>)}
+
             <div className="col-12">
                 <nav aria-label="Page navigation">
                   <ul className="pagination pagination-lg justify-content-center m-0">
