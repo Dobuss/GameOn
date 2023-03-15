@@ -13,6 +13,7 @@ import { Login } from "./components/user/Login";
 import { Register } from "./components/user/Register";
 
 function App() {
+
   return (
     <div className="gameOn">
       <Navigation />
@@ -37,7 +38,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

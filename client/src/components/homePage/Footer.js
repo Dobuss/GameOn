@@ -1,7 +1,27 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import * as subscriptionService from '../../services/subscriptionService'
 
 export const Footer = () => {
-    return (
+    const [email, setEmail] = useState("");
+
+    const emailChangeHandler = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const createSubscription = (e) => {
+        e.preventDefault();
+        const data = {
+            email: email,
+        }
+        subscriptionService.saveSubscription(data)
+        .then(() => {
+            alert('You have succesfully subscribed to our newsletter!')
+            setEmail("")
+        })
+    }
+   
+   return (
         <>
         <div className="footer container-fluid position-relative bg-dark bg-light-radial text-white-50 py-6 px-5">
         <div className="row g-5">
@@ -12,7 +32,7 @@ export const Footer = () => {
                 <p>Hi there, friend! We would love to hear from you! You can find us at:</p>
                 <p><i className="fa fa-map-marker-alt me-2"></i>Alexander Malinov Blvd, Sofia, Bulgaria</p>
                 <p><i className="fa fa-phone-alt me-2"></i>+012 345 67890</p>
-                <p><i className="fa fa-envelope me-2"></i>gameon@email.com</p>
+                <p><Link to="mailto:gameon@email.com" className="fa fa-envelope me-2"></Link>gameon@email.com</p>
                 <div className="d-flex justify-content-start mt-4">
                     <Link className="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" to="https://twitter.com/"><i className="fab fa-twitter"></i></Link>
                     <Link className="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" to="https://facebook.com/"><i className="fab fa-facebook-f"></i></Link>
@@ -35,9 +55,10 @@ export const Footer = () => {
                     <div className="col-sm-12">
                         <h4 className="text-white text-uppercase mb-4">Newsletter</h4>
                         <div className="w-100">
-                            <div className="input-group">
-                                <input type="text" className="form-control border-light" style={{padding: 30}} placeholder="Your Email Address"/><button className="btn btn-primary px-4">Sign Up</button>
-                            </div>
+                            <form className="input-group" onSubmit={createSubscription}>
+                                <input type="email" id="email" className="form-control border-light" style={{padding: 30}} placeholder="Your Email Address" value={email} onChange={emailChangeHandler}/>
+                                <button className="btn btn-primary px-4" type="submit">Sign Up</button>   
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -50,7 +71,6 @@ export const Footer = () => {
                 <p className="mb-0">&copy; <Link className="text-primary" to="/">GameOn</Link>. All Rights Reserved.</p>
             </div>
             <div className="py-4 px-5 bg-primary footer-shape position-relative text-center text-md-end">
-                <p className="mb-0">Designed by <Link className="text-dark" to="https://htmlcodex.com">GameOn Crew</Link></p>
             </div>
         </div>
     </div>
