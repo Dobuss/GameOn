@@ -11,7 +11,7 @@ const gameSchema = new Schema({
         required: [true, 'Game category is required'],
     },
     date: {
-        type: Date,
+        type: String,
         required: [true, 'Release date is required'],
     },
     imageUrl: {
@@ -34,5 +34,7 @@ const gameSchema = new Schema({
     },
 });
 
-const Game = model('Game', gameSchema);
-module.exports = Game;
+const gameModel = model('Game', gameSchema);
+module.exports = {
+    gameModel
+};

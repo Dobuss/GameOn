@@ -4,6 +4,7 @@ import * as subscriptionService from '../../services/subscriptionService'
 
 export const Footer = () => {
     const [email, setEmail] = useState("");
+    const[subscripton, setSubscription] = useState(false);
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value)
@@ -16,7 +17,7 @@ export const Footer = () => {
         }
         subscriptionService.saveSubscription(data)
         .then(() => {
-            alert('You have succesfully subscribed to our newsletter!')
+            setSubscription(true);
             setEmail("")
         })
     }
@@ -55,6 +56,7 @@ export const Footer = () => {
                     <div className="col-sm-12">
                         <h4 className="text-white text-uppercase mb-4">Newsletter</h4>
                         <div className="w-100">
+                                {subscripton && <p style={{fontSize: 20, color: 'white'}}>You have succesfully subscribed to our newsletter!</p>}
                             <form className="input-group" onSubmit={createSubscription}>
                                 <input type="email" id="email" className="form-control border-light" style={{padding: 30}} placeholder="Your Email Address" value={email} onChange={emailChangeHandler}/>
                                 <button className="btn btn-primary px-4" type="submit">Sign Up</button>   

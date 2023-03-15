@@ -1,5 +1,6 @@
 const Router = require('./routes.js');
 
 module.exports = (app) => {
-  app.use('/subscribe', Router);
+  app.use('', Router);
+  app.use('', Router)
 };
