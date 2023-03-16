@@ -34,8 +34,34 @@ const getGameById = async (req, res) => {
     errorHandler(error, res, req);
   }
 };
+
+const updateGame = async (req, res) => {
+  const { gameId } = req.params;
+  const data = req.body;
+
+  try {
+    const game = await gameModel.findByIdAndUpdate(gameId, data, {runValidators: true, new: true})
+    res.status(200).json({game: game.toObject()});
+  } catch (error) {
+    errorHandler(error, res, req)
+  }
+};
+
+const deleteGame = async (req, res) => {
+  const {gameId} = req.params;
+
+  try {
+    await gameModel.findByIdAndDelete(gameId);
+    res.status(200).json({gameId});
+  } catch (error) {
+    errorHandler(error, req, req)
+  }
+}
+
 module.exports = {
   addGame,
   getGames,
   getGameById,
+  updateGame,
+  deleteGame
 };

@@ -271,7 +271,7 @@
 }
 .newGameLbl {
     padding: 10px;
-    color: #fd5d14;
+    color: var(--primary);
     font-size: 20px;
     font-weight: 700;
 }
@@ -281,5 +281,5 @@
 .gameInfo {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }

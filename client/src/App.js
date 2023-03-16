@@ -3,6 +3,7 @@ import "./App.css";
 import { Contact } from "./components/Contact";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
+import { EditGame } from "./components/gamesCatalogue/EditGame";
 import { GameDetails } from "./components/gamesCatalogue/GameDetails";
 import { Header } from "./components/gamesCatalogue/Header";
 import { AboutUs } from "./components/homePage/AboutUs";
@@ -39,6 +40,7 @@ function App() {
           }
         />
         <Route path="/games/:gameId" element={ <GameDetails /> } />
+        <Route path="/games/:gameId/edit" element={ <EditGame /> } />
       </Routes>
       <Footer/>
     </div>
