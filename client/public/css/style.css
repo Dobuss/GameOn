@@ -278,3 +278,8 @@
 .select {
     background-color: white !important;
 }
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

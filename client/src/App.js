@@ -3,6 +3,7 @@ import "./App.css";
 import { Contact } from "./components/Contact";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
+import { GameDetails } from "./components/gamesCatalogue/GameDetails";
 import { Header } from "./components/gamesCatalogue/Header";
 import { AboutUs } from "./components/homePage/AboutUs";
 import { Footer } from "./components/homePage/Footer";
@@ -37,6 +38,7 @@ function App() {
             </>
           }
         />
+        <Route path="/games/:gameId" element={ <GameDetails /> } />
       </Routes>
       <Footer/>
     </div>

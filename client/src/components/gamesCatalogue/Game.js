@@ -15,7 +15,7 @@ export const Game = ({game}) => {
                             </div>
                         </div>
                         <h4 className="text-uppercase mb-3">{game.name}</h4>
-                        <Link className="text-uppercase fw-bold" to="/">See more <i className="bi bi-arrow-right"></i></Link>
+                        <Link className="text-uppercase fw-bold" to={`/games/${game._id}`}>See more <i className="bi bi-arrow-right"></i></Link>
                     </div>
                 </div>
             </div>
