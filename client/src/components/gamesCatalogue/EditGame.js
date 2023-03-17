@@ -4,23 +4,41 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 export const EditGame = () => {
+
     const redirect = useNavigate();
     const {gameId} = useParams();
-    const [game, setGame] = useState({});
+    const [state, setState] = useState({
+        name: "",
+        category: "",
+        date: "",
+        imageUrl: "",
+        platform: "",
+        mode: "",
+        description: ""
+    });
 
+  
     useEffect(() => {
         gamesService.getGameDetails(gameId)
-        .then(setGame)
+        .then((data) => {
+            setState(data)
+        })
         .catch (err => {
             throw err;
         })
     }, [gameId])
 
-    const data = game;
+    const onChangeHandler = (e) => {
+        const input = e.target.value;
+        setState({
+            ...state, [e.target.id]: input
+        })
+    }
+
 
     const onGameSubmit = (e) => {
         e.preventDefault();
-        gamesService.editGame(data)
+        gamesService.editGame(state)
         .then(() => {
             redirect('/games')
         }) 
@@ -41,11 +59,11 @@ export const EditGame = () => {
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
                                 <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} defaultValue={data.name} onChange={(e) => {data.name=e.target.value}}/>
+                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} value={state.name} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select id="category" className="form-control border-0 select" style={{height: 55}} defaultValue={data.category} onChange={(e) => {data.category=e.target.value}}>
+                            <select id="category" className="form-control border-0 select" style={{height: 55}} value={state.category} onChange={onChangeHandler}>
                                     <option value="">--Please choose category--</option>
                                     <option value="Action-adventure">Action-adventure</option>
                                     <option value="Multiplayer online battle arena (MOBA)">Multiplayer online battle arena (MOBA)</option>
@@ -61,15 +79,15 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input id="date" type="date" className="form-control border-0" style={{height: 55}} defaultValue={data.date} onChange={(e) => {data.date=e.target.value}}/>
+                                <input id="date" type="date" className="form-control border-0" style={{height: 55}} value={state.date} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} defaultValue={data.imageUrl} onChange={(e) => {data.imageUrl=e.target.value}}/>
+                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} value={state.imageUrl} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value={data.platform} onChange={(e) => {data.platform=e.target.value}}>
+                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value={state.platform} onChange={onChangeHandler}>
                                     <option value="">--Please choose a platform--</option>
                                     <option value="PC">PC</option>
                                     <option value="PS3">PS3</option>
@@ -80,7 +98,7 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select id="mode" className="form-control border-0 select" style={{height: 55}} value={data.mode} onChange={(e) => {data.mode=e.target.value}}>
+                                <select id="mode" className="form-control border-0 select" style={{height: 55}} value={state.mode} onChange={onChangeHandler}>
                                     <option value="">--Please choose mode--</option>
                                     <option value="Singleplayer">Singleplayer</option>
                                     <option value="Multiplayer">Multiplayer</option>
@@ -88,7 +106,7 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12">
                             <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea className="form-control border-0" rows="5" defaultValue={data.description} onChange={(e) => {data.description=e.target.value}}></textarea>
+                                <textarea id="description" className="form-control border-0" rows="5" value={state.description} onChange={onChangeHandler}></textarea>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Submit</button>
