@@ -44,6 +44,11 @@ export const EditGame = () => {
         }) 
     }
 
+    const cancelHandler = (e) => {
+        e.preventDefault();
+        redirect(`/games/${state._id}`)
+    }
+
     return (
         <div className="container-fluid py-6 px-5">
         <div className="row gx-5">
@@ -109,7 +114,9 @@ export const EditGame = () => {
                                 <textarea id="description" className="form-control border-0" rows="5" value={state.description} onChange={onChangeHandler}></textarea>
                             </div>
                             <div className="col-12">
-                                <button className="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                            <button className="btn btn-primary w-100" type="submit">Submit</button>
+                            <p></p>
+                            <button className="btn btn-primary w-100" type="button" onClick={cancelHandler}>Cancel</button>
                             </div>
                         </div>
                     </form>
