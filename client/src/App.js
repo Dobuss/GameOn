@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Contact } from "./components/Contact";
+import { Team } from "./components/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
 import { EditGame } from "./components/gamesCatalogue/EditGame";
@@ -28,7 +28,7 @@ function App() {
             </>
           }
         />
-        <Route path="/contact" element={ <Contact /> } />
+        <Route path="/team" element={ <Team /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/new-game" element={ <AddNewGame /> } />

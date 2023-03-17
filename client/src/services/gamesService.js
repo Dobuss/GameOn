@@ -13,8 +13,8 @@ export const getGameDetails = async (gameId) => {
     return response.game;
 }
 
-export const editGame = async (data) => {
-    return await fetchData.put(`${baseUrl}/games/${data._id}`, data)
+export const editGame = async (game) => {
+    return await fetchData.put(`${baseUrl}/games/${game._id}`, game)
 }
 
 export const deleteGame = async(gameId) => {

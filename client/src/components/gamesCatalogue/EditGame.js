@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 export const EditGame = () => {
-
     const redirect = useNavigate();
     const {gameId} = useParams();
     const [game, setGame] = useState({});
@@ -17,29 +16,14 @@ export const EditGame = () => {
         })
     }, [gameId])
 
-    const [name, setName] = useState(game.name);
-    const [category, setCategory] = useState(game.category);
-    const [date, setDate] = useState(game.date);
-    const [imageUrl, setImageUrl] = useState(game.imageUrl);
-    const [platform, setPlatform] = useState(game.platform);
-    const [mode, setMode] = useState(game.mode);
-    const [description, setDescripton] = useState(game.description);   
+    const data = game;
 
     const onGameSubmit = (e) => {
         e.preventDefault();
-        const data = {
-            name: name,
-            category: category,
-            date: date,
-            imageUrl: imageUrl,
-            platform: platform,
-            mode: mode,
-            description: description
-        }
         gamesService.editGame(data)
         .then(() => {
             redirect('/games')
-        })      
+        }) 
     }
 
     return (
@@ -57,11 +41,11 @@ export const EditGame = () => {
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
                                 <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} defaultValue={game.name}  onChange={(e) => {setName(e.target.value)}}/>
+                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} defaultValue={data.name} onChange={(e) => {data.name=e.target.value}}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select id="category" className="form-control border-0 select" style={{height: 55}} defaultValue={game.category}  onChange={(e) => {setCategory(e.target.value)}}>
+                            <select id="category" className="form-control border-0 select" style={{height: 55}} defaultValue={data.category} onChange={(e) => {data.category=e.target.value}}>
                                     <option value="">--Please choose category--</option>
                                     <option value="Action-adventure">Action-adventure</option>
                                     <option value="Multiplayer online battle arena (MOBA)">Multiplayer online battle arena (MOBA)</option>
@@ -77,15 +61,15 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input id="date" type="date" className="form-control border-0" style={{height: 55}} defaultValue={game.date}  onChange={(e) => {setDate(e.target.value)}}/>
+                                <input id="date" type="date" className="form-control border-0" style={{height: 55}} defaultValue={data.date} onChange={(e) => {data.date=e.target.value}}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} defaultValue={game.imageUrl}  onChange={(e) => {setImageUrl(e.target.value)}}/>
+                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} defaultValue={data.imageUrl} onChange={(e) => {data.imageUrl=e.target.value}}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value={game.platform}  onChange={(e) => {setPlatform(e.target.value)}}>
+                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value={data.platform} onChange={(e) => {data.platform=e.target.value}}>
                                     <option value="">--Please choose a platform--</option>
                                     <option value="PC">PC</option>
                                     <option value="PS3">PS3</option>
@@ -96,7 +80,7 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select id="mode" className="form-control border-0 select" style={{height: 55}} value={game.mode}  onChange={(e) => {setMode(e.target.value)}}>
+                                <select id="mode" className="form-control border-0 select" style={{height: 55}} value={data.mode} onChange={(e) => {data.mode=e.target.value}}>
                                     <option value="">--Please choose mode--</option>
                                     <option value="Singleplayer">Singleplayer</option>
                                     <option value="Multiplayer">Multiplayer</option>
@@ -104,7 +88,7 @@ export const EditGame = () => {
                             </div>
                             <div className="col-12">
                             <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea className="form-control border-0" rows="5" defaultValue={game.description} onChange={(e) => {setDescripton(e.target.value)}}></textarea>
+                                <textarea className="form-control border-0" rows="5" defaultValue={data.description} onChange={(e) => {data.description=e.target.value}}></textarea>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Submit</button>

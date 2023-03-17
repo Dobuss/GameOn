@@ -48,7 +48,7 @@ export const Footer = () => {
                         <div className="d-flex flex-column justify-content-start">
                             <Link className="text-white-50 mb-2" to="/"><i className="fa fa-angle-right me-2"></i>Home</Link>
                             <Link className="text-white-50 mb-2" to="/games"><i className="fa fa-angle-right me-2"></i>Games Catalogue</Link>
-                            <Link className="text-white-50 mb-2" to="/contact"><i className="fa fa-angle-right me-2"></i>Contact us</Link>
+                            <Link className="text-white-50 mb-2" to="/team"><i className="fa fa-angle-right me-2"></i>Our Team</Link>
                             <Link className="text-white-50 mb-2" to="/login"><i className="fa fa-angle-right me-2"></i>Sign in</Link>
                             <Link className="text-white-50" to="/register"><i className="fa fa-angle-right me-2"></i>Register</Link>
                         </div>
