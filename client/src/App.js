@@ -13,6 +13,7 @@ import { Navigation } from "./components/homePage/Navigation";
 import { Topbar } from "./components/homePage/Topbar";
 import { Login } from "./components/user/Login";
 import { Register } from "./components/user/Register";
+import { NotFound } from "./components/NotFound";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
             </>
           }
         />
+        <Route path="*" element={ <NotFound /> } />
         <Route path="/team" element={ <Team /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
