@@ -1,12 +1,14 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as gamesService from '../../services/gamesService';
+import { DeletionMessage } from './modals/DeletionMessage';
 
 export const GameDetails = () => {
 
     const {gameId} = useParams();
     const [game, setGame] = useState({});
     const redirect = useNavigate();
+    const [showDeleteMessage, setShowDeleteMessage] = useState(false);
 
     useEffect(() => {
         gamesService.getGameDetails(gameId)
@@ -49,8 +51,12 @@ export const GameDetails = () => {
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to="/"><i className="far fa-heart text-primary"></i> Like Game </Link>
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to="/"><i className="far fa-comments text-primary"></i> Comment </Link>
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
-                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameDelete}><i className="far fa-trash-alt text-primary"></i> Delete </button>
+                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
                 </div>
+            <DeletionMessage 
+            show={showDeleteMessage}
+            onClose={() => setShowDeleteMessage(false)}
+            onConfirm={onGameDelete}/>
             </div>
         </div>
     </div>
