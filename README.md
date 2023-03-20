@@ -28,5 +28,5 @@ Authenticated users can access all public pages, as well as are able to create n
 Owners of particular game can Edit it or Delete it. 
 
 # Back End
-The app uses MongoDB and Mongoose and communicated with the database through REST API calls.
+The app uses MongoDB and Mongoose and communicates with the database through REST API calls.
 
