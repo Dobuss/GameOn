@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import * as gamesService from '../../services/gamesService';
 import { Game } from './Game'
@@ -26,28 +25,6 @@ export const Catalogue = () => {
         <div className="row g-5">
 
             {games?.map(g => <Game key={g._id} game={g}/>)}
-
-            <div className="col-12">
-                <nav aria-label="Page navigation">
-                  <ul className="pagination pagination-lg justify-content-center m-0">
-                    <li className="page-item disabled">
-                      <Link className="page-link rounded-0" to="/" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span className="sr-only">Previous</span>
-                      </Link>
-                    </li>
-                    <li className="page-item active"><Link className="page-link" to="/">1</Link></li>
-                    <li className="page-item"><Link className="page-link" to="/">2</Link></li>
-                    <li className="page-item"><Link className="page-link" to="/">3</Link></li>
-                    <li className="page-item">
-                      <Link className="page-link rounded-0" to="/" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span className="sr-only">Next</span>
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
-            </div>
         </div>
     </div>
     );

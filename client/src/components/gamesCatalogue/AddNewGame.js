@@ -5,31 +5,26 @@ import { useNavigate } from 'react-router-dom';
 export const AddNewGame = () => {
 
     const redirect = useNavigate();
+    const [state, setState] = useState({
+        name: "",
+        category: "",
+        date: "",
+        imageUrl: "",
+        platform: "",
+        mode: "",
+        description: ""
+    });
 
-    const [name, setName] = useState("");
-    const [category, setCategory] = useState("");
-    const [date, setDate] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [platform, setPlatform] = useState("");
-    const [mode, setMode] = useState("");
-    const [description, setDescripton] = useState("");
+    const onChangeHandler = (e) => {
+        setState(oldState => ({...oldState, [e.target.id]: e.target.value}))
+    }
 
     const onGameSubmit = (e) => {
         e.preventDefault();
-        const data = {
-            name: name,
-            category: category,
-            date: date,
-            imageUrl: imageUrl,
-            platform: platform,
-            mode: mode,
-            description: description
-        }
-        gamesService.saveGame(data)
+        gamesService.saveGame(state)
         .then(() => {
             redirect('/games')
-        })
-       
+        })     
     }
 
     return (
@@ -47,11 +42,11 @@ export const AddNewGame = () => {
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
                                 <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} onChange={(e) => {setName(e.target.value)}}/>
+                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} value = {state.name} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select id="category" className="form-control border-0 select" style={{height: 55}} onChange={(e) => {setCategory(e.target.value)}}>
+                            <select id="category" className="form-control border-0 select" style={{height: 55}} value = {state.category} onChange={onChangeHandler}>
                                     <option value="">--Please choose category--</option>
                                     <option value="Action-adventure">Action-adventure</option>
                                     <option value="Multiplayer online battle arena (MOBA)">Multiplayer online battle arena (MOBA)</option>
@@ -67,15 +62,15 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input id="date" type="date" className="form-control border-0" value={date} style={{height: 55}} onChange={(e) => {setDate(e.target.value)}}/>
+                                <input id="date" type="date" className="form-control border-0" value={state.date} style={{height: 55}} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} onChange={(e) => {setImageUrl(e.target.value)}}/>
+                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} value = {state.imageUrl} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select id="platform" className="form-control border-0 select" style={{height: 55}} onChange={(e) => {setPlatform(e.target.value)}}>
+                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value = {state.platform} onChange={onChangeHandler}>
                                     <option value="">--Please choose a platform--</option>
                                     <option value="PC">PC</option>
                                     <option value="PS3">PS3</option>
@@ -86,7 +81,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select id="mode" className="form-control border-0 select" style={{height: 55}} onChange={(e) => {setMode(e.target.value)}}>
+                                <select id="mode" className="form-control border-0 select" style={{height: 55}}value = {state.mode} onChange={onChangeHandler}>
                                     <option value="">--Please choose mode--</option>
                                     <option value="Singleplayer">Singleplayer</option>
                                     <option value="Multiplayer">Multiplayer</option>
@@ -94,7 +89,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12">
                             <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea className="form-control border-0" rows="5" onChange={(e) => {setDescripton(e.target.value)}}></textarea>
+                                <textarea className="form-control border-0" id="description" rows="5" value = {state.description} onChange={onChangeHandler}></textarea>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Add Game</button>
