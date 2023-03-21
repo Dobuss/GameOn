@@ -20,3 +20,7 @@ export const editGame = async (game) => {
 export const deleteGame = async(gameId) => {
     return await fetchData.remove(`${baseUrl}/games/${gameId}`)
 }
+
+export const likeGame = async(gameId, data) => {
+    return await fetchData.patch(`${baseUrl}/games/${gameId}`, data);
+}

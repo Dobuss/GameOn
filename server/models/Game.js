@@ -32,6 +32,11 @@ const gameSchema = new Schema({
         required: true,
         minLength: [10, 'Game description must be at least 10 characters']
     },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    owner: {type: Schema.Types.ObjectId, ref: 'User'},
 });
 
 const gameModel = model('Game', gameSchema);

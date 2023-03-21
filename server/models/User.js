@@ -5,7 +5,9 @@ const userSchema = new Schema({
     lastName: { type: String, required: true },
     userName: { type: String, required: true },
     email: {type: String, required: true},
-    hashedPassword: { type: String, required: true }
+    hashedPassword: { type: String, required: true },
+    games: [{type: Schema.Types.ObjectId, ref: 'Game', default: []}],
+    likedGames: [{type: Schema.Types.ObjectId, ref: 'Game', default: []}]
 });
 
 const User = model('User', userSchema);

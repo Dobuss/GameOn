@@ -29,6 +29,14 @@ export const GameDetails = () => {
         })
     }
 
+    const onGameLike = () => {
+        const data = {
+            likes: game.likes + 1
+        }
+        gamesService.likeGame(game._id, data)
+        setGame({...game, likes: data.likes})
+    }
+
    return (
     <div className="container-fluid py-6 px-5" style={{maxWidth: '50vw'}}>
         <div className="row g-5">
@@ -46,10 +54,12 @@ export const GameDetails = () => {
                     <p className='fw-bold mb-2'>{game.description}</p>
                     <h3 className='text-primary'>Release Date</h3>
                     <p className='ms-3 fw-bold mb-2'><i className="far fa-calendar-alt text-primary me-2"></i>{game.date}</p>
+                    <h3 className='text-primary'>Liked by</h3>
+                    <p className='fw-bold mb-2'>{game.likes} users</p>
                 </div>
                 <div className="mt-4">
-                    <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to="/"><i className="far fa-heart text-primary"></i> Like Game </Link>
-                    <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to="/"><i className="far fa-comments text-primary"></i> Comment </Link>
+                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameLike}><i className="far fa-heart text-primary"></i> Like Game </button>
+                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn"><i className="far fa-comments text-primary"></i> Comment </button>
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
                 </div>

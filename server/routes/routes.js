@@ -9,6 +9,7 @@ const gamesController = require('../controllers/gamesController');
   router.post('/games', gamesController.addGame);
 
   router.put('/games/:gameId', gamesController.updateGame);
+  router.patch('/games/:gameId', gamesController.patchGame);
   router.delete('/games/:gameId', gamesController.deleteGame);
 
   module.exports = router;

@@ -58,10 +58,23 @@ const deleteGame = async (req, res) => {
   }
 }
 
+const patchGame = async (req, res) => {
+  const { gameId } = req.params;
+  const data = req.body;
+
+  try {
+    const game = await gameModel.findByIdAndUpdate(gameId, data, {runValidators: true, new: true})
+    res.status(200).json({game: game.toObject()});
+  } catch (error) {
+    errorHandler(error, res, req)
+  }
+};
+
 module.exports = {
   addGame,
   getGames,
   getGameById,
   updateGame,
-  deleteGame
+  deleteGame,
+  patchGame
 };

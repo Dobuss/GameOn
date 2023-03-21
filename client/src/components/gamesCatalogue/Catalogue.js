@@ -21,9 +21,9 @@ export const Catalogue = () => {
         <div className="container-fluid py-6 px-5">
         <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
             <h1 className="display-5 text-uppercase mb-4">Browse <span className="text-primary">Games</span></h1>
+            {games?.length === 0 && <h1 className="display-5 text-uppercase mb-4">Seems like there are no <span className="text-primary">games</span> in our database</h1>}   
         </div>
         <div className="row g-5">
-
             {games?.map(g => <Game key={g._id} game={g}/>)}
         </div>
     </div>
