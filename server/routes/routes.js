@@ -5,11 +5,11 @@ const commentController = require('../controllers/commentController');
 
   router.get('/games', gamesController.getGames);
   router.get('/games/:gameId', gamesController.getGameById);
-  router.get('/games/comments', commentController.getCommentByGameId);
+  router.get('/comments', commentController.getComments);
 
   router.post('/subscribe', controller.subscribe);
   router.post('/games', gamesController.addGame);
-  router.post('/games/comments', commentController.createComment);
+  router.post('/comments', commentController.createComment);
 
   router.put('/games/:gameId', gamesController.updateGame);
   router.patch('/games/:gameId', gamesController.patchGame);

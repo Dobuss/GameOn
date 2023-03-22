@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import * as commentsService from '../../../services/commentsService'
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const AddComment = ({
-    gameId,
-    showCommentForm,
-    setShowCommentForm
-}) => {
-
+export const AddComment = () => {
+    const redirect = useNavigate();
+    const {gameId} = useParams();
     const [comment, setComment] = useState("");
     const [author, setAuthor] = useState("");
 
@@ -17,13 +15,23 @@ export const AddComment = ({
             comment,
             author
         })
-        .then(setShowCommentForm(false))
+        .then(redirect(`/games/${gameId}`))
     }
+
     const onCancel = () => {
-        setShowCommentForm(false);
+        redirect(`/games/${gameId}`)
     }
     
     return (
+        <div className="container-fluid py-6 px-5">
+        <div className="row gx-5">
+            <div className="col-lg-4 mb-5 mb-lg-0">
+                <div className="mb-4">
+                    <h1 className="display-5 text-uppercase mb-4">Add new <span className="text-primary">Comment</span> to the Game</h1>
+                </div>
+                <p className="mb-5" style={{fontSize: 30}}>We are happy to hear from you. <i className="far fa-smile-beam"></i></p>
+            </div>
+            <div className="col-lg-8">
         <div className="bg-light text-center p-5">
                     <form onSubmit={onCommentSubmit}>
                         <div className="row g-3">
@@ -42,6 +50,9 @@ export const AddComment = ({
                             </div>
                         </div>
                     </form>
+                </div>
+                </div>
+                </div>
                 </div>
         );
     }

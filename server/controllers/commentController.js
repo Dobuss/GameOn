@@ -11,20 +11,15 @@ const createComment = async (req, res) => {
     }
 }
 
-const getCommentByGameId = async (req, res) => {
-    const { gameId } = req.params;
-
+const getComments = async (req, res) => {
   try {
-    const comments = await commentModel.findById(gameId);
-    if (!comments) {
-      throw new ValidationError("There is no comments in our database!");
-    }
-    res.status(200).json({ comments: comments.toObject() });
+    const comments = await commentModel.find({}).lean();
+    res.status(200).json(comments)
   } catch (error) {
     errorHandler(error, res, req);
   }
 }
 module.exports = {
     createComment,
-    getCommentByGameId
+    getComments
 }

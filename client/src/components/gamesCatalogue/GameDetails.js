@@ -1,8 +1,8 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as gamesService from '../../services/gamesService';
+import * as commentsService from '../../services/commentsService';
 import { DeletionMessage } from './modals/DeletionMessage';
-import { AddComment } from './comments/AddComment';
 
 export const GameDetails = () => {
 
@@ -10,15 +10,22 @@ export const GameDetails = () => {
     const [game, setGame] = useState({});
     const redirect = useNavigate();
     const [showDeleteMessage, setShowDeleteMessage] = useState(false);
-    const [showCommentForm, setShowCommentForm] = useState(false);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         gamesService.getGameDetails(gameId)
-        .then(setGame)
-        .catch (err => {
-            throw err;
-        })
+        .then(result => {
+            setGame(result)
+    })
     }, [gameId])
+
+   useEffect(() => {
+        commentsService.getComments()
+        .then(result => {
+            const data = result.filter(y => y.gameId === gameId);
+            return setComments(data)
+        })
+        }, [gameId])
 
     const onGameDelete = (e) => {
         e.preventDefault();
@@ -37,9 +44,6 @@ export const GameDetails = () => {
         }
         gamesService.likeGame(game._id, data)
         setGame({...game, likes: data.likes})
-    }
-    const onClickComment = () => {
-        setShowCommentForm(true)
     }
 
    return (
@@ -62,13 +66,21 @@ export const GameDetails = () => {
                     <h3 className='text-primary'>Liked by</h3>
                     <p className='fw-bold mb-2'>{game.likes} users</p>
                 </div>
+                <h3 className='text-primary'>Comments</h3>
+                {comments.map(x => (
+                    <div className="game-info" key={x._id}>
+                        <p className='fw-bold mb-2'>{x.author}: {x.comment}</p>
+                         </div>
+                ))}
+                {comments.length === 0 && (
+                    <p className='fw-bold mb-2'>No comments yet.</p>
+                )}
                 <div className="mt-4">
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameLike}><i className="far fa-heart text-primary"></i> Like Game </button>
-                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onClickComment}><i className="far fa-comments text-primary"></i> Comment </button>
+                    <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/comments/${gameId}`}><i className="far fa-comments text-primary"></i> Comment </Link>
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
                 </div>
-                {showCommentForm ?  <AddComment gameId={gameId} showCommentForm={showCommentForm} setShowCommentForm={setShowCommentForm}/> : null}
             <DeletionMessage 
             show={showDeleteMessage}
             onClose={() => setShowDeleteMessage(false)}

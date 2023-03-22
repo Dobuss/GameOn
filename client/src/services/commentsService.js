@@ -1,13 +1,10 @@
 import * as fetchData from './fetchData';
-const baseUrl = 'http://localhost:3005/games/comments';
+const baseUrl = 'http://localhost:3005/comments';
+
+export const getComments = async () => {
+    return await fetchData.get(baseUrl);
+}
 
 export const createComment = async (data) => {
     return await fetchData.post(baseUrl, data);
-}
-
-export const getComments = async (gameId) => {
-    const query = encodeURIComponent(`gameId="${gameId}"`)
-    const result = await fetchData.get(`${baseUrl}?where=${query}`);
-    const comments = Object.values(result);
-    return comments;
 }

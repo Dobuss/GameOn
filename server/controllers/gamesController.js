@@ -14,8 +14,8 @@ const addGame = async (req, res) => {
 
 const getGames = async (req, res) => {
   try {
-    const users = await gameModel.find({}).lean();
-    res.status(200).json(users);
+    const games = await gameModel.find({}).lean();
+    res.status(200).json(games);
   } catch (err) {
     errorHandler(err, res, req);
   }

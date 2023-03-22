@@ -14,6 +14,7 @@ import { Topbar } from "./components/homePage/Topbar";
 import { Login } from "./components/user/Login";
 import { Register } from "./components/user/Register";
 import { NotFound } from "./components/pageNotFound/NotFound";
+import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={ <Login /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/new-game" element={ <AddNewGame /> } />
+        <Route path="/comments/:gameId" element={ <AddComment /> } />
         <Route path="/games/" element={
           <>
               <Header />
