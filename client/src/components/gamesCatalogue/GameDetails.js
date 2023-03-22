@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as gamesService from '../../services/gamesService';
 import { DeletionMessage } from './modals/DeletionMessage';
+import { AddComment } from './comments/AddComment';
 
 export const GameDetails = () => {
 
@@ -9,6 +10,7 @@ export const GameDetails = () => {
     const [game, setGame] = useState({});
     const redirect = useNavigate();
     const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+    const [showCommentForm, setShowCommentForm] = useState(false);
 
     useEffect(() => {
         gamesService.getGameDetails(gameId)
@@ -36,6 +38,9 @@ export const GameDetails = () => {
         gamesService.likeGame(game._id, data)
         setGame({...game, likes: data.likes})
     }
+    const onClickComment = () => {
+        setShowCommentForm(true)
+    }
 
    return (
     <div className="container-fluid py-6 px-5" style={{maxWidth: '50vw'}}>
@@ -59,10 +64,11 @@ export const GameDetails = () => {
                 </div>
                 <div className="mt-4">
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameLike}><i className="far fa-heart text-primary"></i> Like Game </button>
-                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn"><i className="far fa-comments text-primary"></i> Comment </button>
+                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onClickComment}><i className="far fa-comments text-primary"></i> Comment </button>
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
                 </div>
+                {showCommentForm ?  <AddComment gameId={gameId} showCommentForm={showCommentForm} setShowCommentForm={setShowCommentForm}/> : null}
             <DeletionMessage 
             show={showDeleteMessage}
             onClose={() => setShowDeleteMessage(false)}
