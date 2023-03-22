@@ -5,7 +5,6 @@ import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
 import { EditGame } from "./components/gamesCatalogue/EditGame";
 import { GameDetails } from "./components/gamesCatalogue/GameDetails";
-import { Header } from "./components/gamesCatalogue/Header";
 import { AboutUs } from "./components/homePage/AboutUs";
 import { Footer } from "./components/globalComponents/Footer";
 import { ImageInfo } from "./components/homePage/ImageInfo";
@@ -36,13 +35,7 @@ function App() {
         <Route path="/register" element={ <Register /> } />
         <Route path="/new-game" element={ <AddNewGame /> } />
         <Route path="/comments/:gameId" element={ <AddComment /> } />
-        <Route path="/games/" element={
-          <>
-              <Header />
-              <Catalogue />
-            </>
-          }
-        />
+        <Route path="/games/" element={<Catalogue />}/>
         <Route path="/games/:gameId" element={ <GameDetails /> } />
         <Route path="/games/:gameId/edit" element={ <EditGame /> } />
       </Routes>

@@ -69,7 +69,7 @@ export const GameDetails = () => {
                 <h3 className='text-primary'>Comments</h3>
                 {comments.map(x => (
                     <div className="game-info" key={x._id}>
-                        <p className='fw-bold mb-2'>{x.author}: {x.comment}</p>
+                        <p className='fw-bold mb-2' style={{border: '1px solid var(--primary)'}}>{x.author}: {x.comment}</p>
                          </div>
                 ))}
                 {comments.length === 0 && (

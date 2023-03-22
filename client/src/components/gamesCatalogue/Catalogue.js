@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as gamesService from '../../services/gamesService';
 import { Game } from './Game'
+import { Link } from 'react-router-dom';
 
 export const Catalogue = () => {
 
@@ -18,7 +19,12 @@ export const Catalogue = () => {
     }, []);
 
     return (
-        <div className="container-fluid py-6 px-5">
+        <>
+        <section className="container-fluid page-header">
+            <h1 className="display-3 text-uppercase text-white mb-3">Games Catalogue</h1>
+            <Link to="/new-game" className="btn btn-primary py-md-3 px-md-5 mt-2">Add new game</Link>
+        </section>
+        <section className="container-fluid py-3 px-5">
         <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
             <h1 className="display-5 text-uppercase mb-4">Browse <span className="text-primary">Games</span></h1>
             {games?.length === 0 && <h1 className="display-5 text-uppercase mb-4">Seems like there are no <span className="text-primary">games</span> in our database</h1>}   
@@ -26,6 +32,7 @@ export const Catalogue = () => {
         <div className="row g-5">
             {games?.map(g => <Game key={g._id} game={g}/>)}
         </div>
-    </div>
+    </section>
+    </>
     );
 }
