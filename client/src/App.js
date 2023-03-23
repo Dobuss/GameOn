@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
+import * as authService from "./services/authService"
 import { AuthContext } from "./contexts/AuthContext";
 import { Team } from "./components/teamInfo/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
@@ -16,6 +17,7 @@ import { Login } from "./components/user/Login";
 import { Register } from "./components/user/Register";
 import { NotFound } from "./components/pageNotFound/NotFound";
 import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
+import { Logout } from "./components/user/Logout";
 
 function App() {
 
@@ -23,9 +25,14 @@ function App() {
   function setStateFunc (data) {
     setState(data)
   }
+  const onLogout = async () => {
+    await authService.logout();
+    setState({});
+  }
   const contextValues = {
     setStateFunc,
-    isAuthenticated: !!state.token
+    isAuthenticated: !!state.token,
+    onLogout
   }
 
   return (
@@ -44,6 +51,7 @@ function App() {
         <Route path="*" element={ <NotFound /> } />
         <Route path="/team" element={ <Team /> } />
         <Route path="/login" element={ <Login /> } />
+        <Route path="/logout" element={ <Logout /> } />
         <Route path="/register" element={ <Register /> } />
         <Route path="/new-game" element={ <AddNewGame /> } />
         <Route path="/comments/:gameId" element={ <AddComment /> } />

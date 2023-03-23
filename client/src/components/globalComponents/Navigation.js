@@ -18,7 +18,7 @@ export const Navigation = () => {
                     <Link to="/" className="nav-item nav-link active">Home</Link>
                     <Link to="/games" className="nav-item nav-link">Games Catalogue</Link>
                     <Link to="/team" className="nav-item nav-link">Our Team</Link>
-                    <Link to="/logout" className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Logout <i className="bi bi-arrow-right"></i></Link>
+                    {isAuthenticated && <Link to="/logout" className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Logout <i className="bi bi-arrow-right"></i></Link>}  
                     {!isAuthenticated && (
                     <>
                     <Link to="/login" className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Sign in <i className="bi bi-arrow-right"></i></Link>

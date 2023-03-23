@@ -1,13 +1,6 @@
 const router = require('express').Router();
 const { errorHandler } = require("../utils/errorHandler");
 
-/*
-
-router.get('/logout', (req, res) => {
-    res.json({});
-});
-*/
-
 router.post('/login', async (req, res) => {
     try {
         const user = await req.auth.login(req.body.username, req.body.password);
@@ -25,4 +18,7 @@ router.post('/register', async (req, res) => {
     errorHandler(error, res, req)
 }
 })
+router.get('/logout', (req, res) => {
+    res.json({});
+});
 module.exports = router;
