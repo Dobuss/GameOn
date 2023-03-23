@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/User')
 
 const TOKEN_SECRET = "q390vnodzmgszdfgsdz";
 
@@ -12,9 +13,19 @@ module.exports = () => (req, res, next) => {
         next();
     }
 
+    async function createUser(firstname, lastname, username, email, hashedPassword) {
+        const user = new User({ firstname, lastname, username, email, hashedPassword });
+        return await user.save();
+    }
+
+    async function getUserByUsername(username){
+        const user = User.findOne({ username: username });
+        return await user.lean();
+    }
+
     async function register(firstname, lastname, username, email, password) {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await req.storage.createUser(firstname, lastname, username, email, hashedPassword);
+        const user = await createUser(firstname, lastname, username, email, hashedPassword);
 
         return {
             firstname: user.firstname,
@@ -27,11 +38,11 @@ module.exports = () => (req, res, next) => {
     }
 
     async function login(username, password) {
-        const user = await req.storage.getUserByUsername(username);
-        const isCorrectPassword = user ? await bcrypt.compare(password, user.hashedPassword) : false;
+        const user = await getUserByUsername(username);
+        const match = user ? await bcrypt.compare(password, user.hashedPassword) : false;
 
-        if (!user || !isCorrectPassword) {
-            const error = !user ? new Error('This username does not exist') : new Error('Incorrect password');
+        if (!user || !match) {
+            const error = !user ? new Error('This username does not exist') : new Error('Incorrect username or password');
             error.type = 'credential';
             throw error;
         }
@@ -57,7 +68,6 @@ function generateToken(userData) {
 
 function parseToken(req, res) {
     const token = req.headers['x-authorization'];
-    console.log('auth parse token', token);
 
     if (token) {
         try {

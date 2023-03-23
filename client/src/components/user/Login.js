@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService'
+import { useContext } from "react";
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Login = () => {
+    const {setStateFunc} = useContext(AuthContext);
     const userData = {
         username: "",
         password: ""
@@ -11,16 +14,14 @@ export const Login = () => {
     const [user, setUser] = useState(userData);
     
     const onChangeHandler = (e) => {
-        setUser(oldState => ({...oldState, [e.target.id]: e.target.value}))
+        setUser(oldState => ({...oldState, [e.target.name]: e.target.value}))
     }
     const loginHandler = async (e) => {
         e.preventDefault();
-        const result = await authService.login(user)
-        setUser(result)
-        .then(() => {
+        const loggedUser = await authService.login(user)
+        setStateFunc(loggedUser)
             redirect('/')
-        }) 
-    }
+        }
     return (
     <div className="container-fluid py-6 px-5">
         <div className="row gx-5">
@@ -35,10 +36,10 @@ export const Login = () => {
                     <form method="POST" onSubmit={loginHandler}>
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
-                                <input type="text" id="username" className="form-control border-0" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
+                                <input type="text" name="username" className="form-control border-0" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="password" id="password" className="form-control border-0" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
+                                <input type="password" name="password" className="form-control border-0" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Login</button>

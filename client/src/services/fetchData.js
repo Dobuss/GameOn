@@ -1,4 +1,4 @@
-export const request = async (method, url, data) => {
+export const fetchData = async (method, url, data) => {
     const response = await fetch(url, {
         method,
         headers: {
@@ -8,17 +8,17 @@ export const request = async (method, url, data) => {
         body: JSON.stringify(data)
     });
 
-    const jsonData = await response.json();
+    const result = await response.json();
 
     if (response.ok) {
-        return jsonData;
+        return result;
     } else {
-        throw jsonData;
+        throw result;
     }
 };
 
-export const get = request.bind(null, 'GET');
-export const put = request.bind(null, 'PUT');
-export const post = request.bind(null, 'POST');
-export const remove = request.bind(null, 'DELETE');
-export const patch = request.bind(null, 'PATCH');
+export const get = fetchData.bind(null, 'GET');
+export const put = fetchData.bind(null, 'PUT');
+export const post = fetchData.bind(null, 'POST');
+export const remove = fetchData.bind(null, 'DELETE');
+export const patch = fetchData.bind(null, 'PATCH');

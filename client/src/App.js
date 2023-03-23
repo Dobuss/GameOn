@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { useState } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import { Team } from "./components/teamInfo/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
@@ -18,8 +19,17 @@ import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 
 function App() {
 
+  const [state, setState] = useState({});
+  function setStateFunc (data) {
+    setState(data)
+  }
+  const contextValues = {
+    setStateFunc,
+    isAuthenticated: !!state.token
+  }
+
   return (
-    <AuthContext.Provider value={''}>
+    <AuthContext.Provider value={contextValues}>
     <div className="gameOn">
       <Navigation />
       <Routes>

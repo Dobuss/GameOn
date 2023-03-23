@@ -14,7 +14,7 @@ export const Register = () => {
     const [user, setUser] = useState(userData);
     
     const onChangeHandler = (e) => {
-        setUser(oldState => ({...oldState, [e.target.id]: e.target.value}))
+        setUser(oldState => ({...oldState, [e.target.name]: e.target.value}))
     }
     const registerHandler = async (e) => {
         e.preventDefault();
@@ -37,19 +37,19 @@ export const Register = () => {
                     <form method="POST" onSubmit={registerHandler}>
                         <div className="row g-3">
                         <div className="col-12 col-sm-6">
-                                <input type="text" className="form-control border-0" id="firstname" placeholder="First Name" style={{height: 55}} value={user.firstname} onChange={onChangeHandler}/>
+                                <input type="text" className="form-control border-0" name="firstname" placeholder="First Name" style={{height: 55}} value={user.firstname} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="text" className="form-control border-0" id="lastname" placeholder="Last Name" style={{height: 55}} value={user.lastname} onChange={onChangeHandler}/>
+                                <input type="text" className="form-control border-0" name="lastname" placeholder="Last Name" style={{height: 55}} value={user.lastname} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="text" className="form-control border-0" id="username" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
+                                <input type="text" className="form-control border-0" name="username" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="email" className="form-control border-0" id="email" placeholder="Email" style={{height: 55}} value={user.email} onChange={onChangeHandler}/>
+                                <input type="email" className="form-control border-0" name="email" placeholder="Email" style={{height: 55}} value={user.email} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="password" className="form-control border-0" id="password" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
+                                <input type="password" className="form-control border-0" name="password" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
                             </div>                          
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
