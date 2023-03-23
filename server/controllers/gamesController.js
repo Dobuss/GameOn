@@ -1,8 +1,19 @@
 const { gameModel } = require("../models/Game");
-const { ValidationError } = require("../utils/createValidationError");
 const { errorHandler } = require("../utils/errorHandler");
+const {ValidationError} = require("../utils/createValidationError") 
 
-const addGame = async (req, res) => {
+const router = require('express').Router();
+
+router.get('/', async (req, res) => {
+  try {
+    const games = await gameModel.find({}).lean();
+    res.status(200).json(games);
+  } catch (err) {
+    errorHandler(err, res, req);
+  }
+})
+
+router.post('/', async (req, res) => {
   const data = req.body;
   try {
     await gameModel.create(data);
@@ -10,20 +21,10 @@ const addGame = async (req, res) => {
   } catch (error) {
     errorHandler(error, res, req);
   }
-};
+})
 
-const getGames = async (req, res) => {
-  try {
-    const games = await gameModel.find({}).lean();
-    res.status(200).json(games);
-  } catch (err) {
-    errorHandler(err, res, req);
-  }
-};
-
-const getGameById = async (req, res) => {
+router.get('/:gameId', async (req, res) => {
   const { gameId } = req.params;
-
   try {
     const game = await gameModel.findById(gameId);
     if (!game) {
@@ -33,21 +34,20 @@ const getGameById = async (req, res) => {
   } catch (error) {
     errorHandler(error, res, req);
   }
-};
+})
 
-const updateGame = async (req, res) => {
+router.put('/:gameId', async (req, res) => {
   const { gameId } = req.params;
   const data = req.body;
-
   try {
     const game = await gameModel.findByIdAndUpdate(gameId, data, {runValidators: true, new: true})
     res.status(200).json({game: game.toObject()});
   } catch (error) {
     errorHandler(error, res, req)
   }
-};
+})
 
-const deleteGame = async (req, res) => {
+router.delete('/:gameId', async (req, res) => {
   const {gameId} = req.params;
 
   try {
@@ -56,9 +56,9 @@ const deleteGame = async (req, res) => {
   } catch (error) {
     errorHandler(error, req, req)
   }
-}
+})
 
-const patchGame = async (req, res) => {
+router.patch('/:gameId', async (req, res) => {
   const { gameId } = req.params;
   const data = req.body;
 
@@ -68,13 +68,8 @@ const patchGame = async (req, res) => {
   } catch (error) {
     errorHandler(error, res, req)
   }
-};
+})
 
-module.exports = {
-  addGame,
-  getGames,
-  getGameById,
-  updateGame,
-  deleteGame,
-  patchGame
-};
+module.exports = router;
+
+

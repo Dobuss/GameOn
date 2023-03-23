@@ -3,6 +3,7 @@ export const request = async (method, url, data) => {
         method,
         headers: {
             'content-type': 'application/json',
+            'X-Authorization': ''
         },
         body: JSON.stringify(data)
     });

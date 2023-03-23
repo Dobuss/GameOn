@@ -1,4 +1,4 @@
-const cors = require('cors');
+/*const cors = require('cors');
 const whitelist = ['http://localhost:3000'];
 
 module.exports = (app, express) => {
@@ -12,4 +12,17 @@ module.exports = (app, express) => {
     }
     res.status(error.code || 500).json({ message: error.message || 'An unknown error occurred!' });
   });
+};*/
+const express = require('express');
+const cors = require('cors');
+
+module.exports = (app) => {
+    app.use(
+        cors({
+            credentials: true,
+            origin: 'http://localhost:3000',
+            allowedHeaders: ['Content-Type', 'X-Authorization']
+        })
+    );
+    app.use(express.json());
 };

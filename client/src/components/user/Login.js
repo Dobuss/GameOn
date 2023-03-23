@@ -1,4 +1,26 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as authService from '../../services/authService'
+
 export const Login = () => {
+    const userData = {
+        username: "",
+        password: ""
+    }
+    const redirect = useNavigate();
+    const [user, setUser] = useState(userData);
+    
+    const onChangeHandler = (e) => {
+        setUser(oldState => ({...oldState, [e.target.id]: e.target.value}))
+    }
+    const loginHandler = async (e) => {
+        e.preventDefault();
+        const result = await authService.login(user)
+        setUser(result)
+        .then(() => {
+            redirect('/')
+        }) 
+    }
     return (
     <div className="container-fluid py-6 px-5">
         <div className="row gx-5">
@@ -10,13 +32,13 @@ export const Login = () => {
             </div>
         <div className="col-lg-8">
                 <div className="bg-light text-center p-5">
-                    <form>
+                    <form method="POST" onSubmit={loginHandler}>
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
-                                <input type="text" className="form-control border-0" placeholder="Username" style={{height: 55}}/>
+                                <input type="text" id="username" className="form-control border-0" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="password" className="form-control border-0" placeholder="Password" style={{height: 55}}/>
+                                <input type="password" id="password" className="form-control border-0" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Login</button>

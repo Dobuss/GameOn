@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { AuthContext } from "./contexts/AuthContext";
 import { Team } from "./components/teamInfo/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
@@ -18,6 +19,7 @@ import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 function App() {
 
   return (
+    <AuthContext.Provider value={''}>
     <div className="gameOn">
       <Navigation />
       <Routes>
@@ -41,6 +43,7 @@ function App() {
       </Routes>
       <Footer/>
     </div>
+    </AuthContext.Provider>
   );
 }
 
