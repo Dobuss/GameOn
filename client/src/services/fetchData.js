@@ -1,9 +1,11 @@
+import { getAuthToken } from './getToken'
+
 export const fetchData = async (method, url, data) => {
     const response = await fetch(url, {
         method,
         headers: {
             'content-type': 'application/json',
-            'X-Authorization': ''
+            'X-Authorization': getAuthToken()
         },
         body: JSON.stringify(data)
     });
@@ -16,6 +18,8 @@ export const fetchData = async (method, url, data) => {
         throw result;
     }
 };
+
+
 
 export const get = fetchData.bind(null, 'GET');
 export const put = fetchData.bind(null, 'PUT');

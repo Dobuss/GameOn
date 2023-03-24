@@ -67,14 +67,12 @@ function generateToken(userData) {
 }
 
 function parseToken(req, res) {
-    const token = req.headers['x-authorization'];
+    const token = req.headers['X-Authorization'];
 
     if (token) {
         try {
             const userData = jwt.verify(token, TOKEN_SECRET);
             req.user = userData;
-
-            console.log('Known user:', req.user.username);
         } catch (err) {
             return res.status(401).json({ message: 'Please sign in!' });
         }

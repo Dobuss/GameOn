@@ -1,15 +1,14 @@
 import { createContext } from "react";
-import { useState } from "react";
-import * as authService from "../services/authService"
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
     children,
 }) => {
-    const [state, setState] = useState({});
-    const onLogout = async () => {
-        await authService.logout();
+    const [state, setState] = useLocalStorage('auth', {});
+
+    const onLogout = () => {
         setState({});
       }
     function setStateFunc (data) {

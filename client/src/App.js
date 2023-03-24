@@ -34,9 +34,11 @@ function App() {
         />
         <Route path="*" element={ <NotFound /> } />
         <Route path="/team" element={ <Team /> } />
+         {/* Paths for user management */}
         <Route path="/login" element={ <Login /> } />
         <Route path="/logout" element={ <Logout /> } />
         <Route path="/register" element={ <Register /> } />
+        {/* Paths for games management */}
         <Route path="/new-game" element={ <AddNewGame /> } />
         <Route path="/comments/:gameId" element={ <AddComment /> } />
         <Route path="/games/" element={<Catalogue />}/>

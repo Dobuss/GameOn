@@ -18,6 +18,7 @@ To start the app:
 
 ## Public Part
 Guest users have access to the Home Page, the Team page and the Games Catalog, however they access the pages in read-only mode.
+They can also subscribe for the site's newsletter.
 
 Guest users can login or register using the respective pages. 
 
