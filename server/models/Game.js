@@ -36,7 +36,7 @@ const gameSchema = new Schema({
         type: Number,
         default: 0
     },
-    owner: {type: Schema.Types.ObjectId, ref: 'User'},
+    owner: {type: Schema.Types.ObjectId, ref: 'User', required: true},
 });
 
 const gameModel = model('Game', gameSchema);

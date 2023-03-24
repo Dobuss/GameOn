@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import * as gamesService from '../../services/gamesService';
 import { Game } from './Game'
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Catalogue = () => {
-
+    const {isAuthenticated} = useContext(AuthContext);
     const [games, setGames] = useState(null);
 
     useEffect(() => {
@@ -22,7 +24,9 @@ export const Catalogue = () => {
         <>
         <section className="container-fluid page-header">
             <h1 className="display-3 text-uppercase text-white mb-3">Games Catalogue</h1>
+            {isAuthenticated && 
             <Link to="/new-game" className="btn btn-primary py-md-3 px-md-5 mt-2">Add new game</Link>
+            }
         </section>
         <section className="container-fluid py-3 px-5">
         <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
