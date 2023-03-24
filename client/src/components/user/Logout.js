@@ -5,12 +5,12 @@ import * as authService from '../../services/authService'
 
 export const Logout = () => {
     const redirect = useNavigate();
-    const {onLogout} = useContext(AuthContext)
+    const {setStateFunc} = useContext(AuthContext)
 
     useEffect(() => {
         authService.logout()
         .then(() => {
-            onLogout();
+            setStateFunc({});
             redirect('/');
         });   
     })

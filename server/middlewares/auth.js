@@ -74,7 +74,7 @@ function parseToken(req, res) {
             const userData = jwt.verify(token, TOKEN_SECRET);
             req.user = userData;
         } catch (err) {
-            return res.status(401).json({ message: 'Please sign in!' });
+            return res.status(401).json({ message: 'An error occurred while verifying token' });
         }
     }
     return true;

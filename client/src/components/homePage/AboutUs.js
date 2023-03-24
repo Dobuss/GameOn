@@ -8,14 +8,14 @@ export const AboutUs = () => {
                 <p>We tried to come up with a way for gamers to stop wasting time trying to figure out what to play, but to actually have the time to enjoy the wonderful world of gaming.</p>
                 <div className="row gx-5 py-2">
                     <div className="col-sm-6 mb-2">
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Games Catalogue</p>
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Ratings</p>
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Genre browsing</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Browse our evergrowing catalogue</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Like and comment on your favorite games</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Add new content</p>
                     </div>
                     <div className="col-sm-6 mb-2">
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Evergrowing Database</p>
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Friendly community</p>
-                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Passion</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Stay up-to-date with our newsletter</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Be part of our friendly community</p>
+                        <p className="fw-bold mb-2"><i className="fa fa-check text-primary me-3"></i>Regain your passion for gaming</p>
                     </div>
                 </div>
                 <p className="mb-4">Come join us in a new adventure! We promise it's worth it!</p>

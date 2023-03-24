@@ -8,16 +8,12 @@ export const AuthProvider = ({
 }) => {
     const [state, setState] = useLocalStorage('auth', {});
 
-    const onLogout = () => {
-        setState({});
-      }
     function setStateFunc (data) {
         setState(data)
       }
     const contextValues = {
         setStateFunc,
         isAuthenticated: !!state.token,
-        onLogout
       }
     return (
         <>
