@@ -1,8 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
-import * as authService from "./services/authService"
-import { AuthContext } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { Team } from "./components/teamInfo/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
@@ -21,22 +19,8 @@ import { Logout } from "./components/user/Logout";
 
 function App() {
 
-  const [state, setState] = useState({});
-  function setStateFunc (data) {
-    setState(data)
-  }
-  const onLogout = async () => {
-    await authService.logout();
-    setState({});
-  }
-  const contextValues = {
-    setStateFunc,
-    isAuthenticated: !!state.token,
-    onLogout
-  }
-
   return (
-    <AuthContext.Provider value={contextValues}>
+    <AuthProvider>
     <div className="gameOn">
       <Navigation />
       <Routes>
@@ -61,7 +45,7 @@ function App() {
       </Routes>
       <Footer/>
     </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
