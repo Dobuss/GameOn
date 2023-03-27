@@ -36,6 +36,7 @@ const gameSchema = new Schema({
         type: Number,
         default: 0
     },
+    likedBy: [{type: Schema.Types.ObjectId, ref: 'User', default: []}],
     owner: {type: Schema.Types.ObjectId, ref: 'User', required: true},
 });
 

@@ -60,11 +60,17 @@ router.delete('/:gameId', async (req, res) => {
 
 router.patch('/:gameId', async (req, res) => {
   const { gameId } = req.params;
-  const data = req.body;
+  const {userId, likes, likedBy} = req.body;
 
   try {
-    const game = await gameModel.findByIdAndUpdate(gameId, data, {runValidators: true, new: true})
-    res.status(200).json({game: game.toObject()});
+    const game = await gameModel.findById(gameId);
+    game.likes = likes;
+    if(game.likedBy.includes(userId)){
+      throw new ValidationError('You have liked this game already!')
+    }
+    game.likedBy.push(likedBy);
+    const updatedGame = await gameModel.findByIdAndUpdate(gameId, game)
+    res.status(200).json({updatedGame: updatedGame.toObject()});
   } catch (error) {
     errorHandler(error, res, req)
   }

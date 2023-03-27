@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import * as gamesService from '../../services/gamesService';
 import * as commentsService from '../../services/commentsService';
 import { DeletionMessage } from './modals/DeletionMessage';
+import { useContext } from "react";
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const GameDetails = () => {
-
+    const {userId} = useContext(AuthContext);
     const {gameId} = useParams();
     const [game, setGame] = useState({});
     const redirect = useNavigate();
@@ -17,7 +19,8 @@ export const GameDetails = () => {
         .then(result => {
             setGame(result)
     })
-    }, [gameId])
+}, [gameId])
+    const isOwner = userId === game.owner;
 
    useEffect(() => {
         commentsService.getComments()
@@ -40,10 +43,12 @@ export const GameDetails = () => {
 
     const onGameLike = () => {
         const data = {
-            likes: game.likes + 1
+            userId: userId,
+            likes: game.likes + 1,
+            likedBy: userId,
         }
         gamesService.likeGame(game._id, data)
-        setGame({...game, likes: data.likes})
+        setGame({...game, likes: data.likes, likedBy: data.likedBy, hasLiked: true})
     }
 
    return (
@@ -76,10 +81,17 @@ export const GameDetails = () => {
                     <p className='fw-bold mb-2'>No comments yet.</p>
                 )}
                 <div className="mt-4">
+                {!isOwner && !game.hasLiked && 
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameLike}><i className="far fa-heart text-primary"></i> Like Game </button>
+                }
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/comments/${gameId}`}><i className="far fa-comments text-primary"></i> Comment </Link>
-                    <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
-                    <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
+                    {isOwner &&
+                        <>
+                        <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/games/${gameId}/edit`}><i className="far fa-edit text-primary"></i> Edit </Link>
+                        <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={() => setShowDeleteMessage(true)}><i className="far fa-trash-alt text-primary"></i> Delete </button>
+                        </>
+                    }
+                    
                 </div>
             <DeletionMessage 
             show={showDeleteMessage}
