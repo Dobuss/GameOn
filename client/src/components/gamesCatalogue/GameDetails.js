@@ -21,6 +21,7 @@ export const GameDetails = () => {
     })
 }, [gameId])
     const isOwner = userId === game.owner;
+    let hasLiked = game.likedBy?.includes(userId) ? true : false;
 
    useEffect(() => {
         commentsService.getComments()
@@ -48,7 +49,8 @@ export const GameDetails = () => {
             likedBy: userId,
         }
         gamesService.likeGame(game._id, data)
-        setGame({...game, likes: data.likes, likedBy: data.likedBy, hasLiked: true})
+        setGame({...game, likes: data.likes, likedBy: data.likedBy})
+        hasLiked = true;
     }
 
    return (
@@ -81,7 +83,7 @@ export const GameDetails = () => {
                     <p className='fw-bold mb-2'>No comments yet.</p>
                 )}
                 <div className="mt-4">
-                {!isOwner && !game.hasLiked && 
+                {!isOwner && !hasLiked && 
                     <button style={{fontSize: 24}} className="text-uppercase fw-bold btn" onClick={onGameLike}><i className="far fa-heart text-primary"></i> Like Game </button>
                 }
                     <Link style={{fontSize: 24}} className="text-uppercase fw-bold btn" to={`/comments/${gameId}`}><i className="far fa-comments text-primary"></i> Comment </Link>
