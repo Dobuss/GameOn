@@ -16,6 +16,7 @@ import { Register } from "./components/user/Register";
 import { NotFound } from "./components/pageNotFound/NotFound";
 import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 import { Logout } from "./components/user/Logout";
+import { AuthenticatedRouting } from "./components/authRoutes/AuthenticatedRouting";
 
 function App() {
 
@@ -34,16 +35,16 @@ function App() {
         />
         <Route path="*" element={ <NotFound /> } />
         <Route path="/team" element={ <Team /> } />
-         {/* Paths for user management */}
+        <Route path="/games/" element={<Catalogue />}/>
         <Route path="/login" element={ <Login /> } />
-        <Route path="/logout" element={ <Logout /> } />
         <Route path="/register" element={ <Register /> } />
-        {/* Paths for games management */}
+        <Route path="/logout" element={ <Logout /> } />
+        <Route element={<AuthenticatedRouting/>}>
         <Route path="/new-game" element={ <AddNewGame /> } />
         <Route path="/comments/:gameId" element={ <AddComment /> } />
-        <Route path="/games/" element={<Catalogue />}/>
         <Route path="/games/:gameId" element={ <GameDetails /> } />
         <Route path="/games/:gameId/edit" element={ <EditGame /> } />
+        </Route>
       </Routes>
       <Footer/>
     </div>

@@ -14,6 +14,7 @@ export const AuthProvider = ({
     const contextValues = {
         setStateFunc,
         isAuthenticated: !!state.token,
+        userId: state._id
       }
     return (
         <>

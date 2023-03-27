@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import * as gamesService from '../../services/gamesService'
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from '../../contexts/AuthContext';
+
 
 export const AddNewGame = () => {
+
+    const {userId} = useContext(AuthContext);
 
     const redirect = useNavigate();
     const [state, setState] = useState({
@@ -12,7 +17,8 @@ export const AddNewGame = () => {
         imageUrl: "",
         platform: "",
         mode: "",
-        description: ""
+        description: "",
+        owner: userId
     });
 
     const onChangeHandler = (e) => {
