@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import { AuthProvider } from "./contexts/AuthContext";
+import { AuthenticatedRouting } from "./components/authRoutes/AuthenticatedRouting";
+
 import { Team } from "./components/teamInfo/Team";
 import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
@@ -16,12 +17,13 @@ import { Register } from "./components/user/Register";
 import { NotFound } from "./components/pageNotFound/NotFound";
 import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 import { Logout } from "./components/user/Logout";
-import { AuthenticatedRouting } from "./components/authRoutes/AuthenticatedRouting";
+import { FormValidatorProvider } from "./contexts/FormValidatorContext";
 
 function App() {
 
   return (
     <AuthProvider>
+        <FormValidatorProvider>
     <div className="gameOn">
       <Navigation />
       <Routes>
@@ -48,6 +50,7 @@ function App() {
       </Routes>
       <Footer/>
     </div>
+        </FormValidatorProvider>
     </AuthProvider>
   );
 }

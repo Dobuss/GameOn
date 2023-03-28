@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import * as gamesService from '../../services/gamesService'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useContext } from "react";
+import { FormValidatorContext } from '../../contexts/FormValidatorContext';
 
 
 export const EditGame = () => {
-
+    const {GameValidator, errors} = useContext(FormValidatorContext);
     const redirect = useNavigate();
     const {gameId} = useParams();
     const [state, setState] = useState({
@@ -31,7 +33,7 @@ export const EditGame = () => {
     const onChangeHandler = (e) => {
         const input = e.target.value;
         setState({
-            ...state, [e.target.id]: input
+            ...state, [e.target.name]: input
         })
     }
 
@@ -64,11 +66,20 @@ export const EditGame = () => {
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
                                 <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" id="name" className="form-control border-0" style={{height: 55}} value={state.name} onChange={onChangeHandler}/>
+                                <input type="text" name="name" className="form-control border-0" 
+                                style={{height: 55}} 
+                                value={state.name}
+                                onBlur = {GameValidator}
+                                onChange={onChangeHandler}/>
+                                <p className="errors">{errors?.name}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select id="category" className="form-control border-0 select" style={{height: 55}} value={state.category} onChange={onChangeHandler}>
+                            <select name="category" className="form-control border-0 select" 
+                            style={{height: 55}} 
+                            value={state.category}
+                            onBlur = {GameValidator}
+                            onChange={onChangeHandler}>
                                     <option value="">--Please choose category--</option>
                                     <option value="Action-adventure">Action-adventure</option>
                                     <option value="Multiplayer online battle arena (MOBA)">Multiplayer online battle arena (MOBA)</option>
@@ -81,18 +92,33 @@ export const EditGame = () => {
                                     <option value="Survival and horror">Survival and horror</option>
                                     <option value="Puzzles and party games">Puzzles and party games</option>
                                 </select>
+                                <p className="errors">{errors?.category}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input id="date" type="date" className="form-control border-0" style={{height: 55}} value={state.date} onChange={onChangeHandler}/>
+                                <input name="date" type="date" className="form-control border-0" 
+                                style={{height: 55}} 
+                                value={state.date} 
+                                onBlur = {GameValidator}
+                                onChange={onChangeHandler}/>
+                                <p className="errors">{errors?.date}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" id="imageUrl" className="form-control border-0" style={{height: 55}} value={state.imageUrl} onChange={onChangeHandler}/>
+                                <input type="text" name="imageUrl" className="form-control border-0" 
+                                style={{height: 55}} 
+                                value={state.imageUrl}
+                                onBlur = {GameValidator} 
+                                onChange={onChangeHandler}/>
+                                <p className="errors">{errors?.imageUrl}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select id="platform" className="form-control border-0 select" style={{height: 55}} value={state.platform} onChange={onChangeHandler}>
+                                <select name="platform" className="form-control border-0 select" 
+                                style={{height: 55}} 
+                                value={state.platform}
+                                onBlur = {GameValidator} 
+                                onChange={onChangeHandler}>
                                     <option value="">--Please choose a platform--</option>
                                     <option value="PC">PC</option>
                                     <option value="PS3">PS3</option>
@@ -100,18 +126,28 @@ export const EditGame = () => {
                                     <option value="Xbox">Xbox</option>
                                     <option value="Nintendo Switch">Nintendo Switch</option>
                                 </select>
+                                <p className="errors">{errors?.platform}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select id="mode" className="form-control border-0 select" style={{height: 55}} value={state.mode} onChange={onChangeHandler}>
+                                <select name="mode" className="form-control border-0 select" 
+                                style={{height: 55}} 
+                                value={state.mode} 
+                                onBlur = {GameValidator}
+                                onChange={onChangeHandler}>
                                     <option value="">--Please choose mode--</option>
                                     <option value="Singleplayer">Singleplayer</option>
                                     <option value="Multiplayer">Multiplayer</option>
                                 </select>
+                                <p className="errors">{errors?.mode}</p>
                             </div>
                             <div className="col-12">
                             <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea id="description" className="form-control border-0" rows="5" value={state.description} onChange={onChangeHandler}></textarea>
+                                <textarea name="description" className="form-control border-0" rows="5" 
+                                value={state.description} 
+                                onBlur = {GameValidator}
+                                onChange={onChangeHandler}></textarea>
+                                <p className="errors">{errors?.description}</p>
                             </div>
                             <div className="col-12">
                             <button className="btn btn-primary w-100" type="submit">Submit</button>

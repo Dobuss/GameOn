@@ -3,9 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService'
 import { useContext } from "react";
 import { AuthContext } from '../../contexts/AuthContext';
+import { FormValidatorContext } from '../../contexts/FormValidatorContext';
+
 
 export const Login = () => {
     const {setStateFunc} = useContext(AuthContext);
+    const {UserValidator, errors} = useContext(FormValidatorContext);
+
     const userData = {
         username: "",
         password: ""
@@ -36,10 +40,26 @@ export const Login = () => {
                     <form method="POST" onSubmit={loginHandler}>
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
-                                <input type="text" name="username" className="form-control border-0" placeholder="Username" style={{height: 55}} value={user.username} onChange={onChangeHandler}/>
+                                <input type="text" 
+                                name="username" 
+                                className="form-control border-0" 
+                                placeholder="Username" 
+                                style={{height: 55}} 
+                                value={user.username} 
+                                onBlur = {UserValidator}
+                                onChange={onChangeHandler}/>
+                                <p className="errors">{errors?.username}</p>
                             </div>
                             <div className="col-12 col-sm-6">
-                                <input type="password" name="password" className="form-control border-0" placeholder="Password" style={{height: 55}} value={user.password} onChange={onChangeHandler}/>
+                                <input type="password" 
+                                name="password" 
+                                className="form-control border-0" 
+                                placeholder="Password" 
+                                style={{height: 55}} 
+                                value={user.password} 
+                                onBlur = {UserValidator}
+                                onChange={onChangeHandler}/>
+                                <p className="errors">{errors?.password}</p>
                             </div>
                             <div className="col-12">
                                 <button className="btn btn-primary w-100 py-3" type="submit">Login</button>
