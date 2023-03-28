@@ -40,10 +40,10 @@ function App() {
         <Route path="/register" element={ <Register /> } />
         <Route path="/logout" element={ <Logout /> } />
         <Route element={<AuthenticatedRouting/>}>
-        <Route path="/new-game" element={ <AddNewGame /> } />
-        <Route path="/comments/:gameId" element={ <AddComment /> } />
-        <Route path="/games/:gameId" element={ <GameDetails /> } />
-        <Route path="/games/:gameId/edit" element={ <EditGame /> } />
+          <Route path="/new-game" element={ <AddNewGame /> } />
+          <Route path="/comments/:gameId" element={ <AddComment /> } />
+          <Route path="/games/:gameId" element={ <GameDetails /> } />
+          <Route path="/games/:gameId/edit" element={ <EditGame /> } />
         </Route>
       </Routes>
       <Footer/>
