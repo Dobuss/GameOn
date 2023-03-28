@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService'
+import { useContext } from "react";
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const Register = () => {
+    const {setStateFunc} = useContext(AuthContext);
     const userData = {
         firstname: "",
         lastname: "",
@@ -18,11 +21,10 @@ export const Register = () => {
     }
     const registerHandler = async (e) => {
         e.preventDefault();
-        await authService.register(user)
-        .then(() => {
+        const loggedUser = await authService.register(user)
+        setStateFunc(loggedUser)
             redirect('/')
-        }) 
-    }
+        }
     return (
         <div className="container-fluid py-6 px-5">
         <div className="row gx-5">
