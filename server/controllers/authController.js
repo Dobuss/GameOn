@@ -6,7 +6,8 @@ router.post('/login', async (req, res) => {
         const user = await req.auth.login(req.body.username, req.body.password);
         res.json(user);
     } catch (error) {
-        return error;
+        const message = error.type == 'credential' ? 'Incorrect username or password' : error.message;
+        res.status(error.status || 400).json(message);
     }
 });
 

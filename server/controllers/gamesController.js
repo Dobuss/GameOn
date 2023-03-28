@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     await gameModel.create(data);
     res.status(200).json(data);
   } catch (error) {
-    errorHandler(error, res, req);
+    return errorHandler(error, res, req);
   }
 })
 

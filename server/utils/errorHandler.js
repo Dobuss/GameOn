@@ -35,7 +35,7 @@ function createErrorMessage(error) {
       .map((x) => (Array.isArray(missingProperties[x]) ? `{ ${x}: { ${missingProperties[x].join(', ')} }` : x))
       .join(', ');
   
-    return `Missing properties! You should send a request body like this example: { ${result} }`;
+    return `The following fields are required: ${result}`;
   }
   
   module.exports = {

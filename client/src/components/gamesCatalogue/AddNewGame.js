@@ -10,6 +10,7 @@ export const AddNewGame = () => {
     const {userId} = useContext(AuthContext);
     const {GameValidator, errors} = useContext(FormValidatorContext);
     const redirect = useNavigate();
+    const [serverError, setServerError] = useState(null);
     const [state, setState] = useState({
         name: "",
         category: "",
@@ -30,7 +31,10 @@ export const AddNewGame = () => {
         gamesService.saveGame(state)
         .then(() => {
             redirect('/games')
-        })     
+        })
+        .catch (err => {
+            setServerError(err.message);
+        })  
     }
     return (
         <div className="container-fluid py-6 px-5">
@@ -131,7 +135,8 @@ export const AddNewGame = () => {
                                 <p className="errors">{errors?.description}</p>
                             </div>
                             <div className="col-12">
-                                {Object.keys(errors).length === 0 && <button className="btn btn-primary w-100 py-3" type="submit">Add Game</button>}     
+                                <p className="errors">{serverError}</p>
+                                <button className="btn btn-primary w-100 py-3" type="submit">Add Game</button>
                             </div>
                         </div>
                     </form>
