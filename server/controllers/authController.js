@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
     const user = await req.auth.register(req.body.firstname, req.body.lastname, req.body.username,req.body.email, req.body.password);
     res.json(user);
 } catch (error) {
-    errorHandler(error, res, req)
+        res.status(error.status || 400).json(error.message);
 }
 })
 router.get('/logout', (req, res) => {

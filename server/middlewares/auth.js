@@ -19,11 +19,29 @@ module.exports = () => (req, res, next) => {
     }
 
     async function getUserByUsername(username){
-        const user = User.findOne({ username: username });
+        const user = User.findOne({ username });
+        return await user.lean();
+    }
+
+    async function getUserByEmail(email){
+        const user = User.findOne({ email });
         return await user.lean();
     }
 
     async function register(firstname, lastname, username, email, password) {
+            const usernameIsTaken = await getUserByUsername(username);
+            const emailIsTaken = await getUserByEmail(email);
+
+            if(username && usernameIsTaken){
+                throw new Error("Username is taken!");
+            }
+            if(email && emailIsTaken){
+                throw new Error("Email is taken!");
+            }
+            if(!email || !username || !firstname || !lastname || !password){
+                throw new Error("All fields are required!")
+            }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = await createUser(firstname, lastname, username, email, hashedPassword);
 

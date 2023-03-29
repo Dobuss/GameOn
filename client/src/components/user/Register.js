@@ -8,6 +8,7 @@ import { FormValidatorContext } from '../../contexts/FormValidatorContext';
 export const Register = () => {
     const {setStateFunc} = useContext(AuthContext);
     const {UserValidator, errors} = useContext(FormValidatorContext);
+    const [serverError, setServerError] = useState(null);
     const userData = {
         firstname: "",
         lastname: "",
@@ -23,9 +24,15 @@ export const Register = () => {
     }
     const registerHandler = async (e) => {
         e.preventDefault();
-        const loggedUser = await authService.register(user)
-        setStateFunc(loggedUser)
-            redirect('/')
+        authService
+        .register(user)
+        .then((loggedUser) => {
+            setStateFunc(loggedUser)
+            redirect('/');
+        })
+        .catch((err) => {
+            setServerError(err);
+        })
         }
     return (
         <div className="container-fluid py-6 px-5">
@@ -98,6 +105,7 @@ export const Register = () => {
                                 <p className="errors">{errors?.password}</p>
                             </div>                          
                             <div className="col-12">
+                            <p className="error">{serverError}</p>
                                 <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
                             </div>
                         </div>
