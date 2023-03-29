@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Game } from './Game'
+import { Game } from '../newGame/Game'
 import { useContext } from "react";
-import { AuthContext } from '../../contexts/AuthContext';
-import * as gamesService from '../../services/gamesService';
+import { AuthContext } from '../../../contexts/AuthContext';
+import * as gamesService from '../../../services/gamesService';
 
 export const MyGames = () => {
     const {userId} = useContext(AuthContext);

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const Game = ({game}) => {
     const {isAuthenticated} = useContext(AuthContext);

@@ -1,10 +1,10 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import * as gamesService from '../../services/gamesService';
-import * as commentsService from '../../services/commentsService';
-import { DeletionMessage } from './modals/DeletionMessage';
+import * as gamesService from '../../../services/gamesService';
+import * as commentsService from '../../../services/commentsService';
+import { DeletionMessage } from '../modals/DeletionMessage';
 import { useContext } from "react";
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 export const GameDetails = () => {
     const {userId} = useContext(AuthContext);

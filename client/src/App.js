@@ -3,10 +3,10 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { AuthenticatedRouting } from "./components/authRoutes/AuthenticatedRouting";
 
 import { Team } from "./components/teamInfo/Team";
-import { AddNewGame } from "./components/gamesCatalogue/AddNewGame";
+import { AddNewGame } from "./components/gamesCatalogue/newGame/AddNewGame";
 import { Catalogue } from "./components/gamesCatalogue/Catalogue";
-import { EditGame } from "./components/gamesCatalogue/EditGame";
-import { GameDetails } from "./components/gamesCatalogue/GameDetails";
+import { EditGame } from "./components/gamesCatalogue/editGame/EditGame";
+import { GameDetails } from "./components/gamesCatalogue/gameDetails/GameDetails";
 import { AboutUs } from "./components/homePage/AboutUs";
 import { Footer } from "./components/globalComponents/Footer";
 import { ImageInfo } from "./components/homePage/ImageInfo";
@@ -18,7 +18,7 @@ import { NotFound } from "./components/pageNotFound/NotFound";
 import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 import { Logout } from "./components/user/Logout";
 import { FormValidatorProvider } from "./contexts/FormValidatorContext";
-import { MyGames } from "./components/gamesCatalogue/MyGames";
+import { MyGames } from "./components/gamesCatalogue/myGames/MyGames";
 
 function App() {
 

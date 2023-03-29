@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import * as gamesService from '../../services/gamesService'
+import * as gamesService from '../../../services/gamesService'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
-import { AuthContext } from '../../contexts/AuthContext';
-import { FormValidatorContext } from '../../contexts/FormValidatorContext';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { FormValidatorContext } from '../../../contexts/FormValidatorContext';
 
 export const AddNewGame = () => {
 

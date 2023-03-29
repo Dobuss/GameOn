@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as gamesService from '../../services/gamesService';
-import { Game } from './Game'
+import { Game } from './newGame/Game'
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from '../../contexts/AuthContext';
