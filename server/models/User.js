@@ -6,7 +6,6 @@ const userSchema = new Schema({
     username: { type: String, required: true },
     email: {type: String, required: true},
     hashedPassword: { type: String, required: true },
-    games: [{type: Schema.Types.ObjectId, ref: 'Game', default: []}],
     likedGames: [{type: Schema.Types.ObjectId, ref: 'Game', default: []}]
 });
 

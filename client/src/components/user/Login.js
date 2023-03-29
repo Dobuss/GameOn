@@ -42,8 +42,7 @@ export const Login = () => {
               <span className="text-primary">Login </span>
             </h1>
             <p className="mb-5" style={{ fontSize: 30 }}>
-              Login into the system to get access to our Games Catalogue and
-              more <i className="bi bi-arrow-right"></i>
+              Login into the system to view more information, create new games, write comments and like content <i className="bi bi-arrow-right"></i>
             </p>
           </div>
         </div>

@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const data = req.body;
   try {
-    await gameModel.create(data);
+   await gameModel.create(data);
     res.status(200).json(data);
   } catch (error) {
     return errorHandler(error, res, req);

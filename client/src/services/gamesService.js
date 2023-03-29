@@ -24,3 +24,9 @@ export const deleteGame = async(gameId) => {
 export const likeGame = async(gameId, data) => {
     return await fetchData.patch(`${baseUrl}/games/${gameId}`, data);
 }
+
+export const getMyGames = async(ownerId) => {
+    const allGames =  await fetchData.get(`${baseUrl}/games`);
+    const myGames = allGames.filter(g => g.owner === ownerId);
+    return myGames;
+}

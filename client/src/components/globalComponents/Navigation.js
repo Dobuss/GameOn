@@ -17,6 +17,7 @@ export const Navigation = () => {
                 <div className="navbar-nav ms-auto py-0">
                     <Link to="/" className="nav-item nav-link active">Home</Link>
                     <Link to="/games" className="nav-item nav-link">Games Catalogue</Link>
+                    {isAuthenticated && <Link to="/my-games" className="nav-item nav-link">My Games</Link>}
                     <Link to="/team" className="nav-item nav-link">Our Team</Link>
                     {isAuthenticated && <Link to="/logout" className="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Logout <i className="bi bi-arrow-right"></i></Link>}  
                     {!isAuthenticated && (

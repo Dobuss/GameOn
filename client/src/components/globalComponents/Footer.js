@@ -55,10 +55,13 @@ export const Footer = () => {
                         <h4 className="text-white text-uppercase mb-4">Newsletter</h4>
                         <div className="w-100">
                                 {subscripton && <p style={{fontSize: 20, color: 'white'}}>You have succesfully subscribed to our newsletter!</p>}
-                            <form className="input-group" onSubmit={createSubscription}>
-                                <input type="email" id="email" className="form-control border-light" style={{padding: 30}} placeholder="Your Email Address" value={email} onChange={emailChangeHandler}/>
-                                <button className="btn btn-primary px-4" type="submit">Sign Up</button>   
-                            </form>
+                                {!subscripton && 
+                                    <form className="input-group" onSubmit={createSubscription}>
+                                    <input type="email" id="email" className="form-control border-light" style={{padding: 30}} placeholder="Your Email Address" value={email} onChange={emailChangeHandler}/>
+                                    <button className="btn btn-primary px-4" type="submit">Sign Up</button>   
+                                </form>
+                                }
+                            
                         </div>
                     </div>
                 </div>
