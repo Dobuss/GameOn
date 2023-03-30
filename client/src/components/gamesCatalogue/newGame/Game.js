@@ -7,7 +7,7 @@ export const Game = ({game}) => {
     return (
         <div className="col-lg-4 col-md-6">
                 <div className="bg-light">
-                    <img className="img-fluid" src={game.imageUrl} alt=""/>
+                    <img className="img-fluid" src={game.imageUrl} alt="gamePic"/>
                     <div className="p-4">
                         <div className="d-flex justify-content-between mb-4">
                             <div className="d-flex align-items-center">

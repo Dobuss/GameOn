@@ -17,4 +17,14 @@ describe('Game', () => {
         render(<AuthProvider><Game game={game}/></AuthProvider>)
         expect(screen.getByText(game.date)).toBeInTheDocument(); 
     });
+    test('Show game category', () => {
+        render(<AuthProvider><Game game={game}/></AuthProvider>)
+        expect(screen.getByText(`Category: ${game.category}`)).toBeInTheDocument();
+    })
+    test('Show image', () => {
+        render(<AuthProvider><Game game={game}/></AuthProvider>)
+        const alt = screen.getByAltText('gamePic');
+        expect(alt.src).toContain(game.imageUrl);
+
+    })
 });
