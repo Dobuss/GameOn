@@ -42,7 +42,7 @@ export const EditGame = () => {
         e.preventDefault();
         gamesService.editGame(state)
         .then(() => {
-            redirect('/games')
+            redirect(`/games/${gameId}`)
         }) 
     }
 
