@@ -4,6 +4,7 @@ import * as authService from "../../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FormValidatorContext } from "../../contexts/FormValidatorContext";
+import './authStyle.css'
 
 export const Login = () => {
   const { setStateFunc } = useContext(AuthContext);
@@ -34,11 +35,11 @@ export const Login = () => {
       });
   };
   return (
-    <div className="container-fluid py-6 px-5">
-      <div className="row gx-5">
-        <div className="col-lg-4 mb-5 mb-lg-0">
+    <div className="container">
+      <div className="row">
+        <div className="col">
           <div className="mb-4">
-            <h1 className="display-5 text-uppercase mb-4">
+            <h1 className="uppercase">
               <span className="text-primary">Login </span>
             </h1>
             <p className="mb-5" style={{ fontSize: 30 }}>
@@ -47,14 +48,14 @@ export const Login = () => {
           </div>
         </div>
         <div className="col-lg-8">
-          <div className="bg-light text-center p-5">
+          <div className="formDiv">
             <form method="POST" onSubmit={loginHandler}>
-              <div className="row g-3">
-                <div className="col-12 col-sm-6">
+              <div className="row form">
+                <div className="formRow">
                   <input
                     type="text"
                     name="username"
-                    className="form-control border-0"
+                    className="formControl"
                     placeholder="Username"
                     style={{ height: 55 }}
                     value={user.username}
@@ -63,11 +64,11 @@ export const Login = () => {
                   />
                   <p className="errors">{errors?.username}</p>
                 </div>
-                <div className="col-12 col-sm-6">
+                <div className="formRow">
                   <input
                     type="password"
                     name="password"
-                    className="form-control border-0"
+                    className="formControl"
                     placeholder="Password"
                     style={{ height: 55 }}
                     value={user.password}
@@ -76,7 +77,7 @@ export const Login = () => {
                   />
                   <p className="errors">{errors?.password}</p>
                 </div>
-                <div className="col-12">
+                <div className="buttonDiv">
                   <p className="error">{serverError}</p>
                   <button className="btn btn-primary w-100 py-3" type="submit">
                     Login

@@ -35,7 +35,7 @@ export const Register = () => {
         })
         }
     return (
-        <div className="container-fluid py-6 px-5">
+        <div className="container">
         <div className="row gx-5">
             <div className="col-lg-4 mb-5 mb-lg-0">
                 <div className="mb-4">
