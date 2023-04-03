@@ -4,7 +4,7 @@ import * as authService from "../../services/authService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FormValidatorContext } from "../../contexts/FormValidatorContext";
-import './authStyle.css'
+import styles from './Auth.module.css'
 
 export const Login = () => {
   const { setStateFunc } = useContext(AuthContext);
@@ -35,51 +35,50 @@ export const Login = () => {
       });
   };
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <div className="mb-4">
-            <h1 className="uppercase">
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <div className={styles.col1}>
+          <div className={styles.header}>
+            <h1 className={styles.heading}>
               <span className="text-primary">Login </span>
             </h1>
-            <p className="mb-5" style={{ fontSize: 30 }}>
+          </div>
+            <p className={styles.paragraph}>
               Login into the system to view more information, create new games, write comments and like content <i className="bi bi-arrow-right"></i>
             </p>
-          </div>
         </div>
-        <div className="col-lg-8">
-          <div className="formDiv">
+        <div className={styles.col2}>
+          <div className={styles.form}>
             <form method="POST" onSubmit={loginHandler}>
-              <div className="row form">
-                <div className="formRow">
+              <div className={styles.formContent}>
+                <div className={styles.item}>
                   <input
                     type="text"
                     name="username"
-                    className="formControl"
+                    className={styles.input}
                     placeholder="Username"
-                    style={{ height: 55 }}
                     value={user.username}
                     onBlur={UserValidator}
                     onChange={onChangeHandler}
                   />
-                  <p className="errors">{errors?.username}</p>
+                  <p className={styles.error}>{errors?.username}</p>
                 </div>
-                <div className="formRow">
+                <div className={styles.item}>
                   <input
                     type="password"
                     name="password"
-                    className="formControl"
+                    className={styles.input}
                     placeholder="Password"
-                    style={{ height: 55 }}
+                    autoComplete="on"
                     value={user.password}
                     onBlur={UserValidator}
                     onChange={onChangeHandler}
                   />
-                  <p className="errors">{errors?.password}</p>
+                  <p className={styles.error}>{errors?.password}</p>
                 </div>
-                <div className="buttonDiv">
-                  <p className="error">{serverError}</p>
-                  <button className="btn btn-primary w-100 py-3" type="submit">
+                <div className={styles.btnContainer}>
+                  <p className={styles.error}>{serverError}</p>
+                  <button className={styles.btn} type="submit">
                     Login
                   </button>
                 </div>

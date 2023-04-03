@@ -1,10 +1,12 @@
+import styles from './Team.module.css';
+
 export const Team = () => {
     return (
-        <div className="container-fluid py-6 px-5">
-        <div className="text-center mx-auto mb-5" style={{maxWidth: "600px"}}>
-            <h1 className="display-5 text-uppercase mb-4">We Are The <span className="text-primary">GameOn</span> Team</h1>
+        <div className={styles.container}>
+        <div className={styles.header}>
+            <h1 className={styles.heading}>We Are The <span className="text-primary">GameOn</span> Team</h1>
         </div>
-        <div className="row g-5">
+        <div className={styles.gallery}>
             <div className="col-xl-3 col-lg-4 col-md-6">
                 <div className="row g-0">
                     <div className="col-10" style={{minHeight: "300px"}}>

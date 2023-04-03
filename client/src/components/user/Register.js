@@ -1,118 +1,130 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import * as authService from "../../services/authService";
 import { useContext } from "react";
-import { AuthContext } from '../../contexts/AuthContext';
-import { FormValidatorContext } from '../../contexts/FormValidatorContext';
+import { AuthContext } from "../../contexts/AuthContext";
+import { FormValidatorContext } from "../../contexts/FormValidatorContext";
+import styles from "./Auth.module.css";
 
 export const Register = () => {
-    const {setStateFunc} = useContext(AuthContext);
-    const {UserValidator, errors} = useContext(FormValidatorContext);
-    const [serverError, setServerError] = useState(null);
-    const userData = {
-        firstname: "",
-        lastname: "",
-        username: "",
-        email: "",
-        password: ""
-    }
-    const redirect = useNavigate();
-    const [user, setUser] = useState(userData);
-    
-    const onChangeHandler = (e) => {
-        setUser(oldState => ({...oldState, [e.target.name]: e.target.value}))
-    }
-    const registerHandler = async (e) => {
-        e.preventDefault();
-        authService
-        .register(user)
-        .then((loggedUser) => {
-            setStateFunc(loggedUser)
-            redirect('/');
-        })
-        .catch((err) => {
-            setServerError(err);
-        })
-        }
-    return (
-        <div className="container">
-        <div className="row gx-5">
-            <div className="col-lg-4 mb-5 mb-lg-0">
-                <div className="mb-4">
-                    <h1 className="display-5 text-uppercase mb-4"><span className="text-primary">Register </span></h1>
-                    <p className="mb-5" 
-                    style={{fontSize: 30}}>Hooray! Welcome to our family. Tell us a bit about yourself 
-                    <i className="bi bi-arrow-right"></i></p>
+  const { setStateFunc } = useContext(AuthContext);
+  const { UserValidator, errors } = useContext(FormValidatorContext);
+  const [serverError, setServerError] = useState(null);
+  const userData = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+  };
+  const redirect = useNavigate();
+  const [user, setUser] = useState(userData);
+
+  const onChangeHandler = (e) => {
+    setUser((oldState) => ({ ...oldState, [e.target.name]: e.target.value }));
+  };
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    authService
+      .register(user)
+      .then((loggedUser) => {
+        setStateFunc(loggedUser);
+        redirect("/");
+      })
+      .catch((err) => {
+        setServerError(err);
+      });
+  };
+  return (
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <div className={styles.col1}>
+          <div className={styles.header}>
+            <h1 className={styles.heading}>
+              <span className="text-primary">Register </span>
+            </h1>
+          </div>
+          <p className={styles.paragraph}>
+            Hooray! Welcome to our family. Tell us a bit about yourself
+            <i className="bi bi-arrow-right"></i>
+          </p>
+        </div>
+        <div className={styles.col2}>
+          <div className={styles.form}>
+            <form method="POST" onSubmit={registerHandler}>
+              <div className={styles.formContent}>
+                <div className={styles.item}>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    name="firstname"
+                    placeholder="First Name"
+                    value={user.firstname}
+                    onBlur={UserValidator}
+                    onChange={onChangeHandler}
+                  />
+                  <p className={styles.error}>{errors?.firstname}</p>
                 </div>
-            </div>
-        <div className="col-lg-8">
-                <div className="bg-light text-center p-5">
-                    <form method="POST" onSubmit={registerHandler}>
-                        <div className="row g-3">
-                        <div className="col-12 col-sm-6">
-                                <input type="text" 
-                                className="form-control border-0" 
-                                name="firstname" 
-                                placeholder="First Name" 
-                                style={{height: 55}} 
-                                value={user.firstname} 
-                                onBlur = {UserValidator}
-                                onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.firstname}</p>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <input type="text" 
-                                className="form-control border-0" 
-                                name="lastname" 
-                                placeholder="Last Name" 
-                                style={{height: 55}} 
-                                value={user.lastname}
-                                onBlur = {UserValidator} 
-                                onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.lastname}</p>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <input type="text" 
-                                className="form-control border-0" 
-                                name="username" 
-                                placeholder="Username" 
-                                style={{height: 55}} 
-                                value={user.username} 
-                                onBlur = {UserValidator}
-                                onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.username}</p>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <input type="email" 
-                                className="form-control border-0" 
-                                name="email" 
-                                placeholder="Email" 
-                                style={{height: 55}} 
-                                value={user.email} 
-                                onBlur = {UserValidator}
-                                onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.email}</p>
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <input type="password" 
-                                className="form-control border-0" 
-                                name="password" 
-                                placeholder="Password" 
-                                style={{height: 55}} 
-                                value={user.password} 
-                                onBlur = {UserValidator}
-                                onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.password}</p>
-                            </div>                          
-                            <div className="col-12">
-                            <p className="error">{serverError}</p>
-                                <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
-                            </div>
-                        </div>
-                    </form>
+                <div className={styles.item}>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    name="lastname"
+                    placeholder="Last Name"
+                    value={user.lastname}
+                    onBlur={UserValidator}
+                    onChange={onChangeHandler}
+                  />
+                  <p className={styles.error}>{errors?.lastname}</p>
                 </div>
-            </div>
-            </div>
+                <div className={styles.item}>
+                  <input
+                    type="text"
+                    className={styles.input}
+                    name="username"
+                    placeholder="Username"
+                    value={user.username}
+                    onBlur={UserValidator}
+                    onChange={onChangeHandler}
+                  />
+                  <p className={styles.error}>{errors?.username}</p>
+                </div>
+                <div className={styles.item}>
+                  <input
+                    type="email"
+                    className={styles.input}
+                    name="email"
+                    placeholder="Email"
+                    value={user.email}
+                    onBlur={UserValidator}
+                    onChange={onChangeHandler}
+                  />
+                  <p className={styles.error}>{errors?.email}</p>
+                </div>
+                <div className={styles.item}>
+                  <input
+                    type="password"
+                    className={styles.input}
+                    name="password"
+                    placeholder="Password"
+                    autoComplete="on"
+                    value={user.password}
+                    onBlur={UserValidator}
+                    onChange={onChangeHandler}
+                  />
+                  <p className={styles.error}>{errors?.password}</p>
+                </div>
+                <div className={styles.btnContainer}>
+                  <p className="error">{serverError}</p>
+                  <button className={styles.btn} type="submit">
+                    Register
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    );
-}
+  );
+};

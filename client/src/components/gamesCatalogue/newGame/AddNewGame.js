@@ -43,7 +43,7 @@ export const AddNewGame = () => {
                 <div className="mb-4">
                     <h1 className="display-5 text-uppercase mb-4">Add a <span className="text-primary">New Game</span> to our DATABASE</h1>
                 </div>
-                <p className="mb-5" style={{fontSize: 30}}>Thank you for helping us grow. <i className="far fa-smile-beam"></i></p>
+                <p className="mb-5 newSize">Thank you for helping us grow. <i className="far fa-smile-beam"></i></p>
             </div>
             <div className="col-lg-8">
                 <div className="bg-light text-center p-5">
@@ -51,8 +51,7 @@ export const AddNewGame = () => {
                         <div className="row g-3">
                             <div className="col-12 col-sm-6">
                                 <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" name="name" className="form-control border-0" 
-                                style={{height: 55}} 
+                                <input type="text" name="name" className="form-control border-0 inputHeight" 
                                 value = {state.name} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}/>
@@ -60,8 +59,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select name="category" className="form-control border-0 select" 
-                            style={{height: 55}} 
+                            <select name="category" className="form-control border-0 inputHeight select" 
                             value = {state.category}
                             onBlur = {GameValidator}
                             onChange={onChangeHandler}>
@@ -81,17 +79,15 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input name="date" type="date" className="form-control border-0" 
-                                value={state.date} 
-                                style={{height: 55}} 
+                                <input name="date" type="date" className="form-control border-0 inputHeight" 
+                                value={state.date}  
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}/>
                                 <p className="errors">{errors?.date}</p>
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" name="imageUrl" className="form-control border-0" 
-                                style={{height: 55}} 
+                                <input type="text" name="imageUrl" className="form-control border-0 inputHeight" 
                                 value = {state.imageUrl} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}/>
@@ -99,8 +95,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select name="platform" className="form-control border-0 select" 
-                                style={{height: 55}} 
+                                <select name="platform" className="form-control border-0 inputHeight select" 
                                 value = {state.platform} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}>
@@ -115,8 +110,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                             <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select name="mode" className="form-control border-0 select" 
-                                style={{height: 55}}
+                                <select name="mode" className="form-control border-0 inputHeight select" 
                                 value = {state.mode} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}>
@@ -128,7 +122,7 @@ export const AddNewGame = () => {
                             </div>
                             <div className="col-12">
                             <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea className="form-control border-0" name="description" rows="5" 
+                                <textarea className="form-control border-0 inputHeight" name="description" rows="5" 
                                 value = {state.description}
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}></textarea>

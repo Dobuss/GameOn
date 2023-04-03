@@ -1,0 +1,28 @@
+.container {
+    padding-right: 3rem;
+    padding-left: 3rem;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+.header {
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-right: auto;
+    margin-left: auto; 
+}
+.heading {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: "Roboto", sans-serif;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

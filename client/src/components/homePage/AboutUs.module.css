@@ -1,0 +1,74 @@
+.container {
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.itemsWrapper {
+    flex-wrap: wrap;
+    display: flex;
+    padding: 0.5rem;
+}
+.header {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: "Roboto",sans-serif;
+    font-size: calc(1.375rem + 1.5vw);
+}
+.header2 {
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-family: "Roboto",sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.list {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    align-items: center;
+}
+.col {
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+}
+.item {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.imageWrapper {
+    min-height: 400px;
+    padding-bottom: 3rem;
+    width: 40%;
+}
+.imgBg {
+    margin-left: 3rem;
+    height: 100%;
+    position: relative;
+    background-size: 3px 3px;
+    background-image: -webkit-repeating-radial-gradient(center center, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 100%);
+}
+.img {
+    object-fit: contain;
+    margin-left: -3rem;
+    margin-top: 3rem;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    vertical-align: middle;
+}

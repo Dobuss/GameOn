@@ -269,6 +269,12 @@
     background: var(--primary);
     transform: skew(40deg);
 }
+.newSize {
+    font-size: 30px;
+}
+.inputHeight {
+    height: 55px;
+}
 .newGameLbl {
     padding: 10px;
     color: var(--primary);
@@ -278,8 +284,57 @@
 .select {
     background-color: white !important;
 }
-.gameInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.btn {
+    position: relative;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.btn::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 5px;
+    bottom: -1px;
+    left: 50%;
+    background: var(--primary);
+    transition: .5s;
+}
+
+.btn.btn-primary::after {
+    background: var(--dark);
+}
+
+.btn:hover::after,
+.btn.active::after {
+    width: 50%;
+    left: 25%;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 36px;
+    height: 36px;
+}
+
+.btn-sm-square {
+    width: 28px;
+    height: 28px;
+}
+
+.btn-lg-square {
+    width: 46px;
+    height: 46px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
 }
