@@ -40,7 +40,7 @@ export const Login = () => {
         <div className={styles.col1}>
           <div className={styles.header}>
             <h1 className={styles.heading}>
-              <span className="text-primary">Login </span>
+              <span className={styles.highlight}>Login </span>
             </h1>
           </div>
             <p className={styles.paragraph}>

@@ -3,6 +3,7 @@ import { Game } from '../newGame/Game'
 import { useContext } from "react";
 import { AuthContext } from '../../../contexts/AuthContext';
 import * as gamesService from '../../../services/gamesService';
+import styles from '../Catalogue.module.css'
 
 export const MyGames = () => {
     const {userId} = useContext(AuthContext);
@@ -21,16 +22,16 @@ export const MyGames = () => {
 
     return (
         <>
-        <section className="container-fluid page-header">
-            <h1 className="display-3 text-uppercase text-white mb-3">My Games</h1>
+        <section className={styles.containerHeader}>
+            <h1 className={styles.sectionTitle}>My Games</h1>
         </section>
-        <section className="container-fluid py-3 px-5">
-        <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
-            <h1 className="display-5 text-uppercase mb-4">Browse <span className="text-primary">Games</span></h1>
+        <section className={styles.containerContent}>
+        <div className={styles.browseGamesHeader}>
+            <h1 className={styles.browseGamesHeading}>Browse <span className={styles.highlight}>Games</span></h1>
             {games?.length === 0 && 
-            <h1 className="display-8 text-uppercase mb-5">Seems like you haven't added any <span className="text-primary">games</span> to our database</h1>} 
+            <h1 className={styles.browseGamesHeading}>Seems like you haven't added any <span className={styles.highlight}>games</span> to our database</h1>} 
         </div>
-        <div className="row g-5">
+        <div className={styles.gamesSection}>
             {games?.map(g => <Game key={g._id} game={g}/>)}
         </div>
     </section>

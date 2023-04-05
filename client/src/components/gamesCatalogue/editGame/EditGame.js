@@ -3,6 +3,7 @@ import * as gamesService from '../../../services/gamesService'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useContext } from "react";
 import { FormValidatorContext } from '../../../contexts/FormValidatorContext';
+import styles from '../newGame/AddNewGame.module.css'
 
 
 export const EditGame = () => {
@@ -52,31 +53,27 @@ export const EditGame = () => {
     }
 
     return (
-        <div className="container-fluid py-6 px-5">
-        <div className="row gx-5">
-            <div className="col-lg-4 mb-5 mb-lg-0">
-                <div className="mb-4">
-                    <h1 className="display-5 text-uppercase mb-4">Edit <span className="text-primary">your game</span> and make it better</h1>
-                </div>
-                <p className="mb-5" style={{fontSize: 30}}>Thank you for keeping our database up-to-date! <i className="far fa-smile-beam"></i></p>
+        <section className={styles.container}>
+        <div className={styles.contentWrapper}>
+            <div className={styles.col1}>
+                    <h1 className={styles.heading}>Edit <span className={styles.highlight}>your game</span> and make it better</h1>
+                <p className={styles.paragraph}>Thank you for keeping our database up-to-date! <i className="far fa-smile-beam"></i></p>
             </div>
-            <div className="col-lg-8">
-                <div className="bg-light text-center p-5">
+            <div className={styles.col2}>
+                <div className={styles.col2Wrapper}>
                     <form onSubmit={onGameSubmit}>
-                        <div className="row g-3">
-                            <div className="col-12 col-sm-6">
-                                <label className="newGameLbl" htmlFor="name">Game Name</label>
-                                <input type="text" name="name" className="form-control border-0" 
-                                style={{height: 55}} 
+                        <div className={styles.form}>
+                            <div className={styles.itemWrapper}>
+                                <label className={styles.newGameLbl} htmlFor="name">Game Name</label>
+                                <input type="text" name="name" className={styles.input}
                                 value={state.name}
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.name}</p>
+                                <p className={styles.errors}>{errors?.name}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                            <label className="newGameLbl" htmlFor="category">Game Category</label>
-                            <select name="category" className="form-control border-0 select" 
-                            style={{height: 55}} 
+                            <div className={styles.itemWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="category">Game Category</label>
+                            <select name="category" className={`${styles.select} ${styles.input}`}
                             value={state.category}
                             onBlur = {GameValidator}
                             onChange={onChangeHandler}>
@@ -92,30 +89,27 @@ export const EditGame = () => {
                                     <option value="Survival and horror">Survival and horror</option>
                                     <option value="Puzzles and party games">Puzzles and party games</option>
                                 </select>
-                                <p className="errors">{errors?.category}</p>
+                                <p className={styles.errors}>{errors?.category}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                            <label className="newGameLbl" htmlFor="date">Release Date</label>
-                                <input name="date" type="date" className="form-control border-0" 
-                                style={{height: 55}} 
+                            <div className={styles.itemWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="date">Release Date</label>
+                                <input name="date" type="date" className={styles.input} 
                                 value={state.date} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.date}</p>
+                                <p className={styles.errors}>{errors?.date}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                            <label className="newGameLbl" htmlFor="imageUrl">Image URL</label>
-                                <input type="text" name="imageUrl" className="form-control border-0" 
-                                style={{height: 55}} 
+                            <div className={styles.itemWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="imageUrl">Image URL</label>
+                                <input type="text" name="imageUrl" className={styles.input} 
                                 value={state.imageUrl}
                                 onBlur = {GameValidator} 
                                 onChange={onChangeHandler}/>
-                                <p className="errors">{errors?.imageUrl}</p>
+                                <p className={styles.errors}>{errors?.imageUrl}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                            <label className="newGameLbl" htmlFor="platform">Select a platform</label>
-                                <select name="platform" className="form-control border-0 select" 
-                                style={{height: 55}} 
+                            <div className={styles.itemWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="platform">Select a platform</label>
+                                <select name="platform" className={`${styles.select} ${styles.input}`} 
                                 value={state.platform}
                                 onBlur = {GameValidator} 
                                 onChange={onChangeHandler}>
@@ -126,11 +120,11 @@ export const EditGame = () => {
                                     <option value="Xbox">Xbox</option>
                                     <option value="Nintendo Switch">Nintendo Switch</option>
                                 </select>
-                                <p className="errors">{errors?.platform}</p>
+                                <p className={styles.errors}>{errors?.platform}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                            <label className="newGameLbl" htmlFor="mode">Select Mode</label>
-                                <select name="mode" className="form-control border-0 select" 
+                            <div className={styles.itemWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="mode">Select Mode</label>
+                                <select name="mode" className={`${styles.select} ${styles.input}`} 
                                 style={{height: 55}} 
                                 value={state.mode} 
                                 onBlur = {GameValidator}
@@ -139,26 +133,26 @@ export const EditGame = () => {
                                     <option value="Singleplayer">Singleplayer</option>
                                     <option value="Multiplayer">Multiplayer</option>
                                 </select>
-                                <p className="errors">{errors?.mode}</p>
+                                <p className={styles.errors}>{errors?.mode}</p>
                             </div>
-                            <div className="col-12">
-                            <label className="newGameLbl" htmlFor="description">Game Description</label>
-                                <textarea name="description" className="form-control border-0" rows="5" 
+                            <div className={styles.maxWidthWrapper}>
+                            <label className={styles.newGameLbl} htmlFor="description">Game Description</label>
+                                <textarea name="description" className={styles.input} rows="5" 
                                 value={state.description} 
                                 onBlur = {GameValidator}
                                 onChange={onChangeHandler}></textarea>
-                                <p className="errors">{errors?.description}</p>
+                                <p className={styles.errors}>{errors?.description}</p>
                             </div>
-                            <div className="col-12">
-                            <button className="btn btn-primary w-100" type="submit">Submit</button>
+                            <div className={styles.maxWidthWrapper}>
+                            <button className={styles.btn} type="submit">Submit</button>
                             <p></p>
-                            <button className="btn btn-primary w-100" type="button" onClick={cancelHandler}>Cancel</button>
+                            <button className={styles.btn} type="button" onClick={cancelHandler}>Cancel</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     );
 }

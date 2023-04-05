@@ -1,0 +1,92 @@
+.containerHeader {
+  width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  margin-right: auto;
+  margin-left: auto;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(4, 15, 40, 0.7), rgba(4, 15, 40, 0.7)),
+    url(../../../public/img/need4speed.jpg) center center no-repeat;
+  background-size: cover;
+}
+.sectionTitle {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: calc(1.525rem + 3.3vw);
+}
+@media (min-width: 1200px) {
+  .sectionTitle {
+    font-size: 4rem;
+  }
+}
+.newGameBtn {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 0.5rem;
+  color: #000;
+  background-color: #fd5d14;
+  border-color: #fd5d14;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+@media (min-width: 768px){
+    .newGameBtn {
+        padding: 1rem 3rem 1rem 3rem;
+    }
+}
+.containerContent {
+    padding: 1rem 3rem 1rem 3rem;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.browseGamesHeader {
+    max-width: 600px;
+    text-align: center;
+    margin: 1rem auto 3rem auto;
+}
+.browseGamesHeading {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-size: calc(1.425rem + 2.1vw);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 0;
+    font-family: "Roboto", sans-serif;
+    color: #040f28;
+}
+@media (min-width: 1200px){
+    .browseGamesHeading {
+        font-size: 3rem;
+    }
+}
+.gamesSection {
+    display: flex;
+    flex-wrap: wrap;
+}
+.highlight {
+    color: #fd5d14;
+}
+
+

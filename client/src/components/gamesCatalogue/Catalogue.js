@@ -4,6 +4,7 @@ import { Game } from './newGame/Game'
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AuthContext } from '../../contexts/AuthContext';
+import styles from './Catalogue.module.css'
 
 export const Catalogue = () => {
     const {isAuthenticated} = useContext(AuthContext);
@@ -22,21 +23,21 @@ export const Catalogue = () => {
 
     return (
         <>
-        <section className="container-fluid page-header">
-            <h1 className="display-3 text-uppercase text-white mb-3">Games Catalogue</h1>
+        <section className={styles.containerHeader}>
+            <h1 className={styles.sectionTitle}> Catalogue</h1>
             {isAuthenticated && 
-            <Link to="/new-game" className="btn btn-primary py-md-3 px-md-5 mt-2">Add new game</Link>
+            <Link to="/new-game" className={styles.newGameBtn}>Add new game</Link>
             }
         </section>
-        <section className="container-fluid py-3 px-5">
-        <div className="text-center mx-auto mb-5" style={{maxWidth: 600}}>
-            <h1 className="display-5 text-uppercase mb-4">Browse <span className="text-primary">Games</span></h1>
+        <section className={styles.containerContent}>
+        <div className={styles.browseGamesHeader}>
+            <h1 className={styles.browseGamesHeading}>Browse <span className={styles.highlight}>Games</span></h1>
             {games?.length === 0 && 
             <>
-            <h1 className="display-8 text-uppercase mb-5">Seems like there are no <span className="text-primary">games</span> in our database</h1>  
-            <h2 className="display-8 text-uppercase mb-5">You can <span className="text-primary">login / register</span> and start adding games!</h2></>}   
+            <h1 className={styles.browseGamesHeading}>Seems like there are no <span className={styles.highlight}>games</span> in our database</h1>  
+            <h2 className={styles.browseGamesHeading}>You can <span className={styles.highlight}>login / register</span> and start adding games!</h2></>}   
         </div>
-        <div className="row g-5">
+        <div className={styles.gamesSection}>
             {games?.map(g => <Game key={g._id} game={g}/>)}
         </div>
     </section>

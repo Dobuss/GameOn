@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   z-index: 1020;
-  width: 100%;
+  width: 100vw;
   margin-right: auto;
   margin-left: auto;
   background-image: -webkit-repeating-radial-gradient(
@@ -33,6 +33,7 @@
     transparent 100%
   );
   background-size: 3px 3px;
+  height: 5rem;
 }
 .navbar-brand {
   padding-top: 0.3125rem;
@@ -86,6 +87,7 @@
     margin-left: 1rem;
     cursor: pointer;
     font-size: 20px;
+    text-decoration: none;
 }
 .navItemSpecial:hover{
   color: #ca4a10;

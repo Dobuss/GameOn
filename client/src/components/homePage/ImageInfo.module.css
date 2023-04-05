@@ -7,6 +7,10 @@
 .imageContainer {
     position: relative;
 }
+.img {
+    width: 100%;
+    vertical-align: middle;
+}
 .overlayInfo {
     align-items: center;
     justify-content: center;
@@ -28,6 +32,12 @@
     max-width: 900px;
     padding: 1rem;  
 }
+.icon {
+    font-size: 4em;
+    margin-bottom: 1.5rem;
+    color: #fd5d14;
+    display: block;
+}
 .heading {
     color: azure;
     text-transform: uppercase;
@@ -36,7 +46,14 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-family: "Roboto",sans-serif;
+    font-size: calc(1.375rem + 1.5vw);
 }
+@media (min-width: 1200px){
+    .heading {
+        font-size: 2.5rem;
+    }
+}
+
 .btn {
     display: inline-block;
     color: #FFFFFF;

@@ -44,3 +44,8 @@
     border-right: 1px solid #dee2e6;
     width: 30%;
 }
+.highlight {
+    color: #fd5d14;
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}

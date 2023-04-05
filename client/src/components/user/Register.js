@@ -41,7 +41,7 @@ export const Register = () => {
         <div className={styles.col1}>
           <div className={styles.header}>
             <h1 className={styles.heading}>
-              <span className="text-primary">Register </span>
+              <span className={styles.highlight}>Register </span>
             </h1>
           </div>
           <p className={styles.paragraph}>
@@ -115,7 +115,7 @@ export const Register = () => {
                   <p className={styles.error}>{errors?.password}</p>
                 </div>
                 <div className={styles.btnContainer}>
-                  <p className="error">{serverError}</p>
+                  <p className={styles.error}>{serverError}</p>
                   <button className={styles.btn} type="submit">
                     Register
                   </button>
