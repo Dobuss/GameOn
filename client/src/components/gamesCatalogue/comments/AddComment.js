@@ -8,6 +8,7 @@ export const AddComment = () => {
     const {gameId} = useParams();
     const [comment, setComment] = useState("");
     const [author, setAuthor] = useState("");
+    const [serverError, setServerError] = useState(null);
 
     const onCommentSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +17,12 @@ export const AddComment = () => {
             comment,
             author
         })
-        .then(redirect(`/games/${gameId}`))
+        .then(() => {
+            redirect(`/games/${gameId}`)
+        })
+        .catch(err => {
+            setServerError(err.message);
+        })
     }
 
     const onCancel = () => {
@@ -43,6 +49,7 @@ export const AddComment = () => {
                                 <textarea className={`${styles.input} ${styles.inputComment}`} id="description" rows="5" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
                             </div>
                             <div className={styles.maxWidthWrapper}>
+                            <p className={styles.errors}>{serverError}</p>
                             <button className={styles.btn} type="submit">Add Comment</button>
                             <p></p>
                             <button className={styles.btn} type="button" onClick={onCancel}>Cancel</button>
