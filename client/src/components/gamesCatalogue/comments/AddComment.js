@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as commentsService from '../../../services/commentsService'
 import { useNavigate, useParams } from 'react-router-dom';
+import styles from './AddComment.module.css'
 
 export const AddComment = () => {
     const redirect = useNavigate();
