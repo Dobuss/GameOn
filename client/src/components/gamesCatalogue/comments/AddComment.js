@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as commentsService from '../../../services/commentsService'
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './AddComment.module.css'
@@ -9,6 +9,11 @@ export const AddComment = () => {
     const [comment, setComment] = useState("");
     const [author, setAuthor] = useState("");
     const [serverError, setServerError] = useState(null);
+
+    useEffect(() => {
+        const authorName = JSON.parse(localStorage.getItem('auth'));
+        setAuthor(authorName.username);
+    }, [])
 
     const onCommentSubmit = async (e) => {
         e.preventDefault();
@@ -42,7 +47,7 @@ export const AddComment = () => {
                         <div className={styles.form}>
                             <div className={styles.maxWidthWrapper}>
                                 <label className={styles.newGameLbl} htmlFor="author">Author</label>
-                                <input type="text" id="author" className={styles.input} value={author} onChange={(e) => setAuthor(e.target.value)}/>
+                                <input disabled type="text" id="author" className={styles.input} value={author}/>
                             </div>
                             <div className={styles.maxWidthWrapper}>
                             <label className={styles.newGameLbl} htmlFor="description">Comment</label>
