@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Game } from '../newGame/Game'
 import { useContext } from "react";
 import { AuthContext } from '../../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 import * as gamesService from '../../../services/gamesService';
 import styles from '../Catalogue.module.css'
 
@@ -24,6 +25,7 @@ export const MyGames = () => {
         <>
         <section className={styles.containerHeader}>
             <h1 className={styles.sectionTitle}>My Games</h1>
+            <Link to="/liked-games" className={styles.newGameBtn}>Liked Games</Link>
         </section>
         <section className={styles.containerContent}>
         <div className={styles.browseGamesHeader}>
