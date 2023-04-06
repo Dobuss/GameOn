@@ -19,6 +19,7 @@ import { AddComment } from "./components/gamesCatalogue/comments/AddComment";
 import { Logout } from "./components/user/Logout";
 import { FormValidatorProvider } from "./contexts/FormValidatorContext";
 import { MyGames } from "./components/gamesCatalogue/myGames/MyGames";
+import { LikedGames } from "./components/gamesCatalogue/myGames/LikedGames";
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
         <Route element={<AuthenticatedRouting/>}>
           <Route path="/new-game" element={ <AddNewGame /> } />
           <Route path="/my-games" element={ <MyGames /> } />
+          <Route path="/liked-games" element={ <LikedGames /> } />
           <Route path="/comments/:gameId" element={ <AddComment /> } />
           <Route path="/games/:gameId" element={ <GameDetails /> } />
           <Route path="/games/:gameId/edit" element={ <EditGame /> } />

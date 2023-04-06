@@ -20,7 +20,11 @@ export const GameDetails = () => {
         .then(result => {
             setGame(result)
     })
-}, [gameId])
+    .catch(err => {
+        return redirect('*')
+    })
+}, [gameId, redirect])
+
     const isOwner = userId === game.owner;
     let hasLiked = game.likedBy?.includes(userId) ? true : false;
 

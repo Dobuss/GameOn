@@ -30,3 +30,8 @@ export const getMyGames = async(ownerId) => {
     const myGames = allGames.filter(g => g.owner === ownerId);
     return myGames;
 }
+export const getMyLikedGames = async(userId) => {
+    const allGames =  await fetchData.get(`${baseUrl}/games`);
+    const likedGames = allGames.filter(g => g.likedBy.includes(userId));
+    return likedGames;
+}
