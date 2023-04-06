@@ -30,7 +30,7 @@ export const Catalogue = () => {
             setFilteredList(games.filter((item) => item.category === query));
         } else {
             setSearchValue(false)
-            setFilteredList(games)
+            setFilteredList('')
         }
     }
 

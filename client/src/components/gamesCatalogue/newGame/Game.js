@@ -12,10 +12,10 @@ export const Game = ({game}) => {
                     <div className={styles.detailsWrapper}>
                         <div className={styles.row1}>
                             <div className={styles.itemRow1}>
-                                <span>Category: {game.category} </span>
+                                <span><span className={styles.highlight}>Category:</span> {game.category} </span>
                             </div>
                             <div className={styles.itemRow1}>
-                                <span><i className="far fa-calendar-alt text-primary me-2"></i>{game.date}</span>
+                                <span><i className={`far fa-calendar-alt ${styles.highlight}`}></i> {game.date}</span>
                             </div>
                         </div>
                         <h4 className={styles.heading}>{game.name}</h4>
