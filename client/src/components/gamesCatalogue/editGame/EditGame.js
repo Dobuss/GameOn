@@ -8,6 +8,7 @@ import styles from '../newGame/AddNewGame.module.css'
 
 export const EditGame = () => {
     const {GameValidator, errors} = useContext(FormValidatorContext);
+    const [serverError, setServerError] = useState(null);
     const redirect = useNavigate();
     const {gameId} = useParams();
     const [state, setState] = useState({
@@ -44,7 +45,10 @@ export const EditGame = () => {
         gamesService.editGame(state)
         .then(() => {
             redirect(`/games/${gameId}`)
-        }) 
+        })
+        .catch(err => {
+            setServerError(err.message);
+        })
     }
 
     const cancelHandler = (e) => {
@@ -144,6 +148,7 @@ export const EditGame = () => {
                                 <p className={styles.errors}>{errors?.description}</p>
                             </div>
                             <div className={styles.maxWidthWrapper}>
+                            <p className={styles.errors}>{serverError}</p>
                             <button className={styles.btn} type="submit">Submit</button>
                             <p></p>
                             <button className={styles.btn} type="button" onClick={cancelHandler}>Cancel</button>
