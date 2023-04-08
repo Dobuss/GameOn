@@ -42,7 +42,7 @@ export const AddNewGame = () => {
         <div className={styles.contentWrapper}>
             <div className={styles.col1}>
                     <h1 className={styles.heading}>Add a <span className={styles.highlight}>New Game</span> to our DATABASE</h1>
-                <p className={styles.paragraph}>Thank you for helping us grow. <i class="far fa-grin-hearts"></i></p>
+                <p className={styles.paragraph}>Thank you for helping us grow. <i className="far fa-grin-hearts"></i></p>
             </div>
             <div className={styles.col2}>
                 <div className={styles.col2Wrapper}>
