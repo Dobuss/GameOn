@@ -9,6 +9,7 @@ The application is a Games Catalog where users can browse different games, add n
 ## Available Scripts
 
 To start the server: 
+- Install nodemon globally by running `npm install -g nodemon` in the terminal.
 - Navigate to server folder and run `npm start`
 - Server runs on port 3005.
 
